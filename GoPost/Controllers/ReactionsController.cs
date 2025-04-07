@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using GoPost.Models;
 using GoPost.Data;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 [Authorize]
 public class ReactionsController : Controller
@@ -21,6 +22,11 @@ public class ReactionsController : Controller
     public async Task<IActionResult> Like(int postId)
     {
         var user = await _userManager.GetUserAsync(User);
+
+        if (user == null)
+        {
+            return Unauthorized();
+        }
 
         var existingReaction = await _context.Reactions
             .FirstOrDefaultAsync(r => r.PostId == postId && r.UserId == user.Id && r.Type == "like");
@@ -53,7 +59,62 @@ public class ReactionsController : Controller
         }
 
         await _context.SaveChangesAsync();
-        return RedirectToAction("Details", "Posts", new { id = postId });
+
+        // Get the updated like count
+        var likeCount = await _context.Reactions
+            .CountAsync(r => r.PostId == postId && r.Type == "like");
+
+        // Return the like count as JSON to update the UI
+        return Json(likeCount);
     }
 
+    [HttpPost]
+    public async Task<IActionResult> Dislike(int postId)
+    {
+        var user = await _userManager.GetUserAsync(User);
+
+        if (user == null)
+        {
+            return Unauthorized();
+        }
+
+        var existingReaction = await _context.Reactions
+            .FirstOrDefaultAsync(r => r.PostId == postId && r.UserId == user.Id && r.Type == "dislike");
+
+        if (existingReaction != null)
+        {
+            // If already disliked, remove the dislike
+            _context.Reactions.Remove(existingReaction);
+        }
+        else
+        {
+            // Remove like if it exists
+            var existingLike = await _context.Reactions
+                .FirstOrDefaultAsync(r => r.PostId == postId && r.UserId == user.Id && r.Type == "like");
+
+            if (existingLike != null)
+            {
+                _context.Reactions.Remove(existingLike);
+            }
+
+            // Add dislike
+            var reaction = new Reaction
+            {
+                PostId = postId,
+                UserId = user.Id,
+                Type = "dislike"
+            };
+
+            _context.Reactions.Add(reaction);
+        }
+
+        await _context.SaveChangesAsync();
+
+        // Get the updated dislike count
+        var dislikeCount = await _context.Reactions
+            .CountAsync(r => r.PostId == postId && r.Type == "dislike");
+
+        // Return the dislike count as JSON to update the UI
+        return Json(dislikeCount);
+    }
 }
