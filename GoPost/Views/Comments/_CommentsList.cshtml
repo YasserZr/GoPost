@@ -1,0 +1,10 @@
+﻿@model IEnumerable<GoPost.Models.Comment>
+
+@foreach (var comment in Model.OrderByDescending(c => c.CreatedAt))
+{
+        <li class="list-group-item">
+            <strong>@comment.User.UserName</strong>: @comment.Content
+            <br />
+            <small class="text-muted">@comment.CreatedAt.ToLocalTime()</small>
+        </li>
+}

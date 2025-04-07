@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using GoPost.Models;
 using GoPost.Data;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace GoPost.Controllers
 {
@@ -26,8 +27,7 @@ namespace GoPost.Controllers
         {
             if (string.IsNullOrWhiteSpace(content))
             {
-                TempData["CommentError"] = "Comment cannot be empty.";
-                return RedirectToAction("Details", "Post", new { id = postId });
+                return BadRequest("Comment cannot be empty.");
             }
 
             var user = await _userManager.GetUserAsync(User);
@@ -48,7 +48,13 @@ namespace GoPost.Controllers
             _context.Comments.Add(comment);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("Details", "Posts", new { id = postId });
+            // Return the updated comment list as a partial view
+            var comments = _context.Comments
+                .Where(c => c.PostId == postId)
+                .OrderByDescending(c => c.CreatedAt)
+                .Include(c => c.User);
+
+            return PartialView("_CommentsList", await comments.ToListAsync());
         }
     }
 }
