@@ -4,6 +4,7 @@ using GoPost.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GoPost.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250407175814_Updated_Post_Model")]
+    partial class Updated_Post_Model
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -145,32 +148,6 @@ namespace GoPost.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Posts");
-                });
-
-            modelBuilder.Entity("GoPost.Models.PostFile", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("FileName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FilePath")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("PostId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PostId");
-
-                    b.ToTable("PostFiles");
                 });
 
             modelBuilder.Entity("GoPost.Models.Reaction", b =>
@@ -486,17 +463,6 @@ namespace GoPost.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("GoPost.Models.PostFile", b =>
-                {
-                    b.HasOne("GoPost.Models.Post", "Post")
-                        .WithMany("PostFiles")
-                        .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Post");
-                });
-
             modelBuilder.Entity("GoPost.Models.Reaction", b =>
                 {
                     b.HasOne("GoPost.Models.Post", "Post")
@@ -570,8 +536,6 @@ namespace GoPost.Data.Migrations
             modelBuilder.Entity("GoPost.Models.Post", b =>
                 {
                     b.Navigation("Comments");
-
-                    b.Navigation("PostFiles");
 
                     b.Navigation("Reactions");
                 });

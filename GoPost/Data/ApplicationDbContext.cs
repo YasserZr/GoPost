@@ -17,6 +17,8 @@ namespace GoPost.Data
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Follow> Follows { get; set; }
         public DbSet<Notification> Notifications { get; set; }
+        public DbSet<PostFile> PostFiles { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

@@ -245,6 +245,26 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\uploads\\0e42c4a6-5d9e-4fde-8e57-e9f2f350483a.docx",
+      "PackagePath": "staticwebassets\\uploads\\0e42c4a6-5d9e-4fde-8e57-e9f2f350483a.docx"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\uploads\\43d3a7a3-5056-448d-aad7-abc560d05958.docx",
+      "PackagePath": "staticwebassets\\uploads\\43d3a7a3-5056-448d-aad7-abc560d05958.docx"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\uploads\\b054e2ad-9e36-4de8-bab9-0a4d57b2e393.jpg",
+      "PackagePath": "staticwebassets\\uploads\\b054e2ad-9e36-4de8-bab9-0a4d57b2e393.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\uploads\\ce75a3d4-75ac-4cb8-b839-bfd6be0424b7.docx",
+      "PackagePath": "staticwebassets\\uploads\\ce75a3d4-75ac-4cb8-b839-bfd6be0424b7.docx"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\uploads\\eed0c669-4c73-463b-ac51-469d744f353c.jpg",
+      "PackagePath": "staticwebassets\\uploads\\eed0c669-4c73-463b-ac51-469d744f353c.jpg"
+    },
+    {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.GoPost.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

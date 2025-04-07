@@ -4,15 +4,17 @@
     ViewData["Title"] = "All Posts";
 }
 
-<h1>All Posts</h1>
+<h1 class="mb-4">All Posts</h1>
 
 <p>
     <a asp-action="Create" class="btn btn-primary">➕ Create New Post</a>
 </p>
 
-<table class="table table-striped">
-    <thead>
+<table class="table table-bordered table-hover align-middle">
+    <thead class="table-light">
         <tr>
+            <th>Image</th>
+            <th>Title</th>
             <th>Content</th>
             <th>Posted At</th>
             <th>Posted By</th>
@@ -22,16 +24,27 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>@item.Content</td>
-                <td>@item.CreatedAt.ToLocalTime().ToString("g")</td>
-                <td>@item.User?.UserName</td>
-                <td>
-                    <a asp-action="Details" asp-route-id="@item.Id">View</a> |
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
+                <tr>
+                    <td>
+                    @if (!string.IsNullOrEmpty(item.ImagePath))
+                    {
+                                <img src="@Url.Content(item.ImagePath)" alt="Post Image" style="height: 60px; width: auto;" class="rounded" />
+                    }
+                    else
+                    {
+                                <span class="text-muted">No image</span>
+                    }
+                    </td>
+                    <td>@item.Title</td>
+                    <td>@(item.Content.Length > 60 ? item.Content.Substring(0, 60) + "..." : item.Content)</td>
+                    <td>@item.CreatedAt.ToLocalTime().ToString("g")</td>
+                    <td>@item.User?.UserName</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-info">View</a>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-warning mx-1">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">Delete</a>
+                    </td>
+                </tr>
         }
     </tbody>
 </table>
