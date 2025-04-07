@@ -1,0 +1,37 @@
+﻿@model IEnumerable<GoPost.Models.Post>
+
+@{
+    ViewData["Title"] = "All Posts";
+}
+
+<h1>All Posts</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">➕ Create New Post</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Content</th>
+            <th>Posted At</th>
+            <th>Posted By</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Content</td>
+                <td>@item.CreatedAt.ToLocalTime().ToString("g")</td>
+                <td>@item.User?.UserName</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id">View</a> |
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

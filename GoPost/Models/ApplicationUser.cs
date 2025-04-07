@@ -9,4 +9,7 @@ public class ApplicationUser : IdentityUser
     public ICollection<Follow> Followers { get; set; }
     public ICollection<Follow> Following { get; set; }
     public ICollection<Comment> Comments { get; set; } // 🔥 Optional
+    public ICollection<Notification> SentNotifications { get; set; }
+    public ICollection<Notification> ReceivedNotifications { get; set; }
+
 }
