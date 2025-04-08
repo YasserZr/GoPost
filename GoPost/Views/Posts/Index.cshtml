@@ -1,50 +1,43 @@
 ﻿@model IEnumerable<GoPost.Models.Post>
 
 @{
-    ViewData["Title"] = "All Posts";
+    ViewData["Title"] = "My Posts";
 }
 
-<h1 class="mb-4">All Posts</h1>
+<h1 class="mb-4">My Posts</h1>
 
 <p>
     <a asp-action="Create" class="btn btn-primary">➕ Create New Post</a>
 </p>
 
-<table class="table table-bordered table-hover align-middle">
-    <thead class="table-light">
-        <tr>
-            <th>Image</th>
-            <th>Title</th>
-            <th>Content</th>
-            <th>Posted At</th>
-            <th>Posted By</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-                <tr>
-                    <td>
-                    @if (!string.IsNullOrEmpty(item.ImagePath))
-                    {
-                                <img src="@Url.Content(item.ImagePath)" alt="Post Image" style="height: 60px; width: auto;" class="rounded" />
-                    }
-                    else
-                    {
-                                <span class="text-muted">No image</span>
-                    }
-                    </td>
-                    <td>@item.Title</td>
-                    <td>@(item.Content.Length > 60 ? item.Content.Substring(0, 60) + "..." : item.Content)</td>
-                    <td>@item.CreatedAt.ToLocalTime().ToString("g")</td>
-                    <td>@item.User?.UserName</td>
-                    <td>
-                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-info">View</a>
-                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-warning mx-1">Edit</a>
-                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">Delete</a>
-                    </td>
-                </tr>
-        }
-    </tbody>
-</table>
+<!-- 🔍 AJAX Search Input -->
+<div class="mb-3">
+    <input type="text" id="searchInput" class="form-control" placeholder="🔍 Search by title..." />
+</div>
+
+<!-- 🔁 Dynamic Table Container -->
+<div id="postsContainer">
+    @Html.Partial("_PostsTable", Model)
+</div>
+
+@section Scripts {
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#searchInput").on("input", function () {
+                    const searchValue = $(this).val();
+
+                    $.ajax({
+                        url: '@Url.Action("Search", "Posts")',
+                        data: { searchString: searchValue },
+                        success: function (result) {
+                            $("#postsContainer").html(result);
+                        },
+                        error: function () {
+                            $("#postsContainer").html('<p class="text-danger">Something went wrong while searching.</p>');
+                        }
+                    });
+                });
+            });
+        </script>
+}

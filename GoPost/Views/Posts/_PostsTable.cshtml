@@ -1,0 +1,40 @@
+﻿@model IEnumerable<GoPost.Models.Post>
+
+<table class="table table-bordered table-hover align-middle">
+    <thead class="table-light">
+        <tr>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Posted At</th>
+            <th>Posted By</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+                <tr>
+                    <td>
+                    @if (!string.IsNullOrEmpty(item.ImagePath))
+                    {
+                                <img src="@Url.Content(item.ImagePath)" alt="Post Image" style="height: 60px; width: auto;" class="rounded" />
+                    }
+                    else
+                    {
+                                <span class="text-muted">No image</span>
+                    }
+                    </td>
+                    <td>@item.Title</td>
+                    <td>@(item.Content.Length > 60 ? item.Content.Substring(0, 60) + "..." : item.Content)</td>
+                    <td>@item.CreatedAt.ToLocalTime().ToString("g")</td>
+                    <td>@item.User?.UserName</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-info">View</a>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-warning mx-1">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">Delete</a>
+                    </td>
+                </tr>
+        }
+    </tbody>
+</table>

@@ -1,2 +1,14 @@
 ﻿<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
 <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+@section Scripts {
+        <environment include="development">
+            <!-- You can still include the jQuery CDN if needed -->
+            <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/jquery-validation-unobtrusive@3.0.0/dist/jquery.validate.unobtrusive.min.js"></script>
+
+            <!-- Now correctly use await to render the validation scripts partial -->
+        @await Html.PartialAsync("_ValidationScriptsPartial")
+        </environment>
+}

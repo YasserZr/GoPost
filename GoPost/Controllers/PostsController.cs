@@ -29,37 +29,66 @@ namespace GoPost.Controllers
             _webHostEnvironment = webHostEnvironment;
         }
 
+
         // GET: Posts
         [Authorize]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
             var currentUserId = _userManager.GetUserId(User);
 
-            var posts = await _context.Posts
+            var postsQuery = _context.Posts
                 .Where(p => p.UserId == currentUserId)
                 .Include(p => p.User)
                 .OrderByDescending(p => p.CreatedAt)
-                .ToListAsync();
+                .AsQueryable(); // 👈 This enables further chaining
 
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                postsQuery = postsQuery.Where(p => p.Title.Contains(searchString));
+            }
+
+            var posts = await postsQuery.ToListAsync(); // 👈 Now we execute the query
             return View(posts);
         }
+
 
         // GET: Posts Admin
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> AllPosts()
+        public async Task<IActionResult> AllPosts(string searchString)
         {
-            var posts = await _context.Posts
+            var postsQuery = _context.Posts
                 .Include(p => p.User)
                 .OrderByDescending(p => p.CreatedAt)
-                .ToListAsync();
+                .AsQueryable(); // 👈 Make sure it's IQueryable so we can chain
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                postsQuery = postsQuery.Where(p => p.Title.Contains(searchString));
+            }
+
+            var posts = await postsQuery.ToListAsync(); // 👈 await here gives a List<Post>
 
             return View(posts);
         }
 
-        private bool PostExists(int id, string userId)
+        public async Task<IActionResult> Search(string searchString)
         {
-            return _context.Posts.Any(e => e.Id == id && e.UserId == userId);
+            var currentUserId = _userManager.GetUserId(User);
+
+            IQueryable<Post> posts = _context.Posts
+                .Where(p => p.UserId == currentUserId)
+                .Include(p => p.User)
+                .OrderByDescending(p => p.CreatedAt);
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                posts = posts.Where(p => p.Title.Contains(searchString));
+            }
+
+            var result = await posts.ToListAsync();
+            return PartialView("_PostsTable", result);
         }
+
 
         // GET: Posts/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -164,37 +193,27 @@ namespace GoPost.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-
-
-
-
-
-
-
-
         // GET: Posts/Edit/5
         [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
-                Debug.WriteLine("Edit: id is null.");
                 return NotFound();
             }
 
-            var post = await _context.Posts.FindAsync(id);
+            var post = await _context.Posts
+                .Include(p => p.PostFiles)  // Include files with the post
+                .FirstOrDefaultAsync(p => p.Id == id);
+
             if (post == null)
             {
-                Debug.WriteLine($"Edit: Post with id {id} not found.");
                 return NotFound();
             }
 
             var currentUserId = _userManager.GetUserId(User);
-            Debug.WriteLine($"Edit: Current UserId: {currentUserId}, Post UserId: {post.UserId}");
-
             if (post.UserId != currentUserId)
             {
-                Debug.WriteLine("Edit: Unauthorized access attempt.");
                 return Unauthorized();
             }
 
@@ -205,82 +224,123 @@ namespace GoPost.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Content,UserId")] Post post, IFormFile imageFile, IFormFile fileAttachment)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Content,UserId,ImagePath")] Post post, IFormFile imageFile, List<IFormFile> newFiles, List<int> fileDeleteIds)
         {
             if (id != post.Id)
             {
-                Debug.WriteLine($"Edit POST: id mismatch. Expected: {id}, Received: {post.Id}");
                 return NotFound();
             }
 
             var currentUserId = _userManager.GetUserId(User);
             if (post.UserId != currentUserId)
             {
-                Debug.WriteLine("Edit POST: Unauthorized access attempt.");
                 return Unauthorized();
             }
 
-            ModelState.Remove("User");
+            // Get the existing post from the database
+            var existingPost = await _context.Posts
+                .Include(p => p.PostFiles)  // Get the related files
+                .FirstOrDefaultAsync(p => p.Id == id);
 
-            if (ModelState.IsValid)
+            if (existingPost == null)
             {
-                try
-                {
-                    var existingPost = await _context.Posts.FindAsync(id);
-                    if (existingPost == null)
-                    {
-                        Debug.WriteLine("Edit POST: Post not found.");
-                        return NotFound();
-                    }
-
-                    existingPost.Content = post.Content;
-
-                    // Update image if a new one is uploaded
-                    if (imageFile != null && imageFile.Length > 0)
-                    {
-                        var imagePath = Path.Combine("wwwroot/uploads", Guid.NewGuid().ToString() + Path.GetExtension(imageFile.FileName));
-                        using (var stream = new FileStream(imagePath, FileMode.Create))
-                        {
-                            await imageFile.CopyToAsync(stream);
-                        }
-                        existingPost.ImagePath = "/uploads/" + Path.GetFileName(imagePath);
-                        Debug.WriteLine($"Image updated: {existingPost.ImagePath}");
-                    }
-
-                    // Update file if a new one is uploaded
-                    if (fileAttachment != null && fileAttachment.Length > 0)
-                    {
-                        var filePath = Path.Combine("wwwroot/uploads", Guid.NewGuid().ToString() + Path.GetExtension(fileAttachment.FileName));
-                        using (var stream = new FileStream(filePath, FileMode.Create))
-                        {
-                            await fileAttachment.CopyToAsync(stream);
-                        }
-                        existingPost.FilePath = "/uploads/" + Path.GetFileName(filePath);
-                        Debug.WriteLine($"File updated: {existingPost.FilePath}");
-                    }
-
-                    _context.Update(existingPost);
-                    await _context.SaveChangesAsync();
-                    Debug.WriteLine("Post edited successfully!");
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!PostExists(post.Id, currentUserId))
-                    {
-                        Debug.WriteLine($"Edit POST: Post with id {post.Id} not found or doesn't belong to the user.");
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-
-                return RedirectToAction(nameof(Index));
+                return NotFound();
             }
 
-            Debug.WriteLine("Edit POST: Model state is invalid.");
-            return View(post);
+            // Update the content of the post
+            existingPost.Content = post.Content;
+
+            // Update the image if a new one is uploaded
+            if (imageFile != null && imageFile.Length > 0)
+            {
+                // Delete the existing image if there is one
+                if (!string.IsNullOrEmpty(existingPost.ImagePath))
+                {
+                    var oldImagePath = Path.Combine("wwwroot", existingPost.ImagePath.TrimStart('/'));
+                    if (System.IO.File.Exists(oldImagePath))
+                    {
+                        System.IO.File.Delete(oldImagePath);
+                    }
+                }
+
+                // Save the new image
+                var uploadsDirectory = Path.Combine(_webHostEnvironment.WebRootPath, "uploads");
+                if (!Directory.Exists(uploadsDirectory))
+                {
+                    Directory.CreateDirectory(uploadsDirectory);
+                }
+
+                var imagePath = Path.Combine(uploadsDirectory, Guid.NewGuid().ToString() + Path.GetExtension(imageFile.FileName));
+                using (var stream = new FileStream(imagePath, FileMode.Create))
+                {
+                    await imageFile.CopyToAsync(stream);
+                }
+                existingPost.ImagePath = "/uploads/" + Path.GetFileName(imagePath);
+            }
+
+            // Handle the deletion of files
+            if (fileDeleteIds != null && fileDeleteIds.Any())
+            {
+                foreach (var fileId in fileDeleteIds)
+                {
+                    var fileToDelete = existingPost.PostFiles.FirstOrDefault(f => f.Id == fileId);
+                    if (fileToDelete != null)
+                    {
+                        // Delete the file from the server
+                        var filePath = Path.Combine("wwwroot", fileToDelete.FilePath.TrimStart('/'));
+                        if (System.IO.File.Exists(filePath))
+                        {
+                            System.IO.File.Delete(filePath);
+                        }
+
+                        // Remove the file entry from the database
+                        _context.PostFiles.Remove(fileToDelete);
+                    }
+                }
+            }
+
+            // Handle the addition of new files
+            if (newFiles != null && newFiles.Any())
+            {
+                var uploadsDirectory = Path.Combine(_webHostEnvironment.WebRootPath, "uploads");
+                foreach (var file in newFiles)
+                {
+                    if (file.Length > 0)
+                    {
+                        var filePath = Path.Combine(uploadsDirectory, Guid.NewGuid().ToString() + Path.GetExtension(file.FileName));
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await file.CopyToAsync(stream);
+                        }
+
+                        existingPost.PostFiles.Add(new PostFile
+                        {
+                            FileName = Path.GetFileName(filePath),
+                            FilePath = "/uploads/" + Path.GetFileName(filePath)
+                        });
+                    }
+                }
+            }
+
+            try
+            {
+                // Save the changes
+                _context.Update(existingPost);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!PostExists(post.Id, currentUserId))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Posts/Delete/5
@@ -361,6 +421,35 @@ namespace GoPost.Controllers
             await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> RemoveFile(int fileId)
+        {
+            var postFile = await _context.PostFiles.FindAsync(fileId);
+            if (postFile == null)
+            {
+                return Json(new { success = false, message = "File not found." });
+            }
+
+            // Delete file from the server
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", postFile.FilePath.TrimStart('/'));
+            if (System.IO.File.Exists(filePath))
+            {
+                System.IO.File.Delete(filePath);
+            }
+
+            // Remove file entry from the database
+            _context.PostFiles.Remove(postFile);
+            await _context.SaveChangesAsync();
+
+            return Json(new { success = true });
+        }
+
+        private bool PostExists(int postId, string userId)
+        {
+            return _context.Posts.Any(p => p.Id == postId && p.UserId == userId);
         }
 
 

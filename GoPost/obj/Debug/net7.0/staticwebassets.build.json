@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "VHRnYlO9IczRjXL90BbKEjOe1CqYNx10gNQFk/nUKJQ=",
+  "Hash": "yHcrFTFtzjX3Xfp+zYF3F0xkOGL7+dU3CLarskPg2X4=",
   "Source": "GoPost",
   "BasePath": "_content/GoPost",
   "Mode": "Default",
@@ -2125,6 +2125,23 @@
       "OriginalItemSpec": "wwwroot\\uploads\\43d3a7a3-5056-448d-aad7-abc560d05958.docx"
     },
     {
+      "Identity": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\uploads\\8c1b0e24-2329-42ba-b219-fd708f281872.docx",
+      "SourceId": "GoPost",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\",
+      "BasePath": "_content/GoPost",
+      "RelativePath": "uploads/8c1b0e24-2329-42ba-b219-fd708f281872.docx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\8c1b0e24-2329-42ba-b219-fd708f281872.docx"
+    },
+    {
       "Identity": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\uploads\\b054e2ad-9e36-4de8-bab9-0a4d57b2e393.jpg",
       "SourceId": "GoPost",
       "SourceType": "Discovered",
@@ -2142,23 +2159,6 @@
       "OriginalItemSpec": "wwwroot\\uploads\\b054e2ad-9e36-4de8-bab9-0a4d57b2e393.jpg"
     },
     {
-      "Identity": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\uploads\\ce75a3d4-75ac-4cb8-b839-bfd6be0424b7.docx",
-      "SourceId": "GoPost",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\",
-      "BasePath": "_content/GoPost",
-      "RelativePath": "uploads/ce75a3d4-75ac-4cb8-b839-bfd6be0424b7.docx",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\ce75a3d4-75ac-4cb8-b839-bfd6be0424b7.docx"
-    },
-    {
       "Identity": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\uploads\\eed0c669-4c73-463b-ac51-469d744f353c.jpg",
       "SourceId": "GoPost",
       "SourceType": "Discovered",
@@ -2174,6 +2174,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\eed0c669-4c73-463b-ac51-469d744f353c.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\uploads\\efce3369-ae0e-4e26-8484-7567bc4a0189.docx",
+      "SourceId": "GoPost",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\",
+      "BasePath": "_content/GoPost",
+      "RelativePath": "uploads/efce3369-ae0e-4e26-8484-7567bc4a0189.docx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\efce3369-ae0e-4e26-8484-7567bc4a0189.docx"
     }
   ]
 }

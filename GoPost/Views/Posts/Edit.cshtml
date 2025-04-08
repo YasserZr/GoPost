@@ -37,12 +37,62 @@
         }
     </div>
 
+    <div class="form-group mb-3">
+        <label class="form-label">Change Files (optional)</label>
+        <input type="file" name="newFiles" class="form-control" multiple />
+
+        @if (Model.PostFiles != null && Model.PostFiles.Any())
+        {
+                <div class="mt-2">
+                    <h5>Current Files:</h5>
+                    <ul>
+                    @foreach (var file in Model.PostFiles)
+                    {
+                            <li id="file-@file.Id" class="file-item">
+                                <a href="@Url.Content(file.FilePath)" target="_blank">@file.FileName</a>
+                                <button type="button" class="btn btn-danger btn-sm remove-file-btn" data-file-id="@file.Id" style="margin-left: 10px;">
+                                    <i class="bi bi-x-circle"></i> Remove
+                                </button>
+                            </li>
+                    }
+                    </ul>
+                </div>
+        }
+    </div>
+
     <button type="submit" class="btn btn-primary">💾 Save Changes</button>
     <a asp-action="Index" class="btn btn-secondary ms-2">Back to List</a>
 </form>
 
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+    @await Html.PartialAsync("_ValidationScriptsPartial");
+
+        <script>
+            // Attach click event for the remove file button
+            $(".remove-file-btn").click(function (e) {
+                e.preventDefault();
+                var fileId = $(this).data("file-id");
+                var fileContainer = $("#file-" + fileId);
+
+                // AJAX call to remove the file
+                $.ajax({
+                    url: '@Url.Action("RemoveFile", "Posts")',  // Make sure this is the correct controller and action
+                    type: 'POST',
+                    data: {
+                        fileId: fileId
+                    },
+                    success: function (response) {
+                        if (response.success) {
+                            // On success, remove the file element from the DOM
+                            fileContainer.remove();
+                        } else {
+                            alert("Error removing the file.");
+                        }
+                    },
+                    error: function () {
+                        alert("An error occurred while removing the file.");
+                    }
+                });
+            });
+        </script>
 }
