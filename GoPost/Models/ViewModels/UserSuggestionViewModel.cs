@@ -1,4 +1,4 @@
-﻿namespace GoPost.Models
+﻿namespace GoPost.Models.ViewModels
 {
     public class UserSuggestionViewModel
     {

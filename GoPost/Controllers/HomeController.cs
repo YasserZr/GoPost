@@ -1,5 +1,6 @@
 ﻿using GoPost.Data;
 using GoPost.Models;
+using GoPost.Models.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -24,7 +25,7 @@ namespace GoPost.Controllers
         public async Task<IActionResult> Index()
         {
             var currentUserId = _userManager.GetUserId(User);
-
+            // Get Suggested users
             var suggestedUsers = await _context.Users
             .Where(u => u.Id != currentUserId &&
                     !_context.Follows.Any(f => f.FollowerId == currentUserId && f.FolloweeId == u.Id))
@@ -37,7 +38,51 @@ namespace GoPost.Controllers
                 })
                 .ToListAsync();
 
-            return View(suggestedUsers);
+            // Get recent posts of followed users
+            var followingPosts = await _context.Follows
+                .Where(f => f.FollowerId == currentUserId)
+                .SelectMany(f => _context.Posts
+                    .Where(p => p.UserId == f.FolloweeId)
+                    .OrderByDescending(p => p.CreatedAt)
+                    .Take(3)
+                    .Select(p => new PostViewModel // Create a ViewModel for posts if you don't have one
+                    {
+                        PostId = p.Id,
+                        Content = p.Content,
+                        CreatedAt = p.CreatedAt,
+                        UserName = _context.Users.Where(u => u.Id == p.UserId).Select(u => u.UserName).FirstOrDefault()
+                        // Add other relevant post properties
+                    }))
+                .OrderByDescending(p => p.CreatedAt)
+                .Take(3) // Ensure only the top 3 across all followed users
+                .ToListAsync();
+
+            // Get current user's recent posts
+            List<PostViewModel> currentUserPosts = new List<PostViewModel>();
+            if (!string.IsNullOrEmpty(currentUserId))
+            {
+                currentUserPosts = await _context.Posts
+                    .Where(p => p.UserId == currentUserId)
+                    .OrderByDescending(p => p.CreatedAt)
+                    .Take(3)
+                    .Select(p => new PostViewModel
+                    {
+                        PostId = p.Id,
+                        Content = p.Content,
+                        CreatedAt = p.CreatedAt,
+                        UserName = User.Identity.Name // Or fetch from ApplicationUser if needed
+                    })
+                    .ToListAsync();
+            }
+
+            var viewModel = new HomePageViewModel
+            {
+                SuggestedUsers = suggestedUsers,
+                FollowingPosts = followingPosts,
+                CurrentUserPosts = currentUserPosts
+            };
+
+            return View(viewModel);
         }
 
 

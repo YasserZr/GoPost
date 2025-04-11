@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "P9uOar2l4X4CozRxqIO/S1+knKodPiseZAxkwoPMx4A=",
+  "Hash": "ZPjS3pM/+4MJxjYpKUkPKX/TmqG7F4/Y1bv8lrZMMX4=",
   "Source": "GoPost",
   "BasePath": "_content/GoPost",
   "Mode": "Default",
@@ -2244,6 +2244,40 @@
       "OriginalItemSpec": "wwwroot\\uploads\\657dc2eb-7139-4a47-81ef-477027e89bb0.txt"
     },
     {
+      "Identity": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\uploads\\6a5d2b15-883a-4ebb-a007-b43e04a3deb5.PNG",
+      "SourceId": "GoPost",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\",
+      "BasePath": "_content/GoPost",
+      "RelativePath": "uploads/6a5d2b15-883a-4ebb-a007-b43e04a3deb5.PNG",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\6a5d2b15-883a-4ebb-a007-b43e04a3deb5.PNG"
+    },
+    {
+      "Identity": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\uploads\\7007d293-94c1-4105-a220-5ede713e6fd3.jpg",
+      "SourceId": "GoPost",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\",
+      "BasePath": "_content/GoPost",
+      "RelativePath": "uploads/7007d293-94c1-4105-a220-5ede713e6fd3.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\7007d293-94c1-4105-a220-5ede713e6fd3.jpg"
+    },
+    {
       "Identity": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\uploads\\8c1b0e24-2329-42ba-b219-fd708f281872.docx",
       "SourceId": "GoPost",
       "SourceType": "Discovered",
@@ -2295,6 +2329,23 @@
       "OriginalItemSpec": "wwwroot\\uploads\\b172e211-3a78-4710-b6f4-72544cce7c1d.jpg"
     },
     {
+      "Identity": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\uploads\\b6ea921f-8a48-4a2d-bf86-9ab00a08a65f.PNG",
+      "SourceId": "GoPost",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\",
+      "BasePath": "_content/GoPost",
+      "RelativePath": "uploads/b6ea921f-8a48-4a2d-bf86-9ab00a08a65f.PNG",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\b6ea921f-8a48-4a2d-bf86-9ab00a08a65f.PNG"
+    },
+    {
       "Identity": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\uploads\\bcca3d2d-93af-460d-8311-ffbffade4493.PNG",
       "SourceId": "GoPost",
       "SourceType": "Discovered",
@@ -2310,6 +2361,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\bcca3d2d-93af-460d-8311-ffbffade4493.PNG"
+    },
+    {
+      "Identity": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\uploads\\c1392a55-7f5e-4d7c-9ddd-24f328d83c0f.jpg",
+      "SourceId": "GoPost",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\",
+      "BasePath": "_content/GoPost",
+      "RelativePath": "uploads/c1392a55-7f5e-4d7c-9ddd-24f328d83c0f.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\c1392a55-7f5e-4d7c-9ddd-24f328d83c0f.jpg"
     },
     {
       "Identity": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\uploads\\c87337ed-4d40-415e-b357-17026c8acafa.jpg",

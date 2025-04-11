@@ -1,4 +1,4 @@
-﻿@model List<UserSuggestionViewModel>
+﻿@model GoPost.Models.ViewModels.HomePageViewModel
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -6,17 +6,57 @@
 @if (User.Identity.IsAuthenticated)
 {
         <div class="mt-4">
-        <h4>People you may know</h4>
-        <ul id="suggestionList">
-            @foreach (var user in Model)
+            <h4>People you may know</h4>
+            <ul id="suggestionList">
+            @foreach (var user in Model.SuggestedUsers)
             {
                         <li id="user-@user.UserId">
                             <strong>@user.UserName</strong>
                             <button class="btn btn-sm btn-primary follow-btn" data-user-id="@user.UserId">Follow</button>
                         </li>
             }
-        </ul>
-    </div>
+            </ul>
+        </div>
+
+        <div class="mt-4">
+            <h4>Recent Posts from Following</h4>
+        @if (Model.FollowingPosts.Any())
+        {
+                    <ul class="list-group">
+                @foreach (var post in Model.FollowingPosts)
+                {
+                                <li class="list-group-item">
+                                    <strong>@post.UserName</strong> - <small>@post.CreatedAt.ToString("g")</small>
+                                    <p class="mt-2">@post.Content</p>
+                                </li>
+                }
+                    </ul>
+        }
+        else
+        {
+                    <p>No recent posts from the users you are following.</p>
+        }
+        </div>
+
+        <div class="mt-4">
+            <h4>Your Recent Posts</h4>
+        @if (Model.CurrentUserPosts.Any())
+        {
+                    <ul class="list-group">
+                @foreach (var post in Model.CurrentUserPosts)
+                {
+                                <li class="list-group-item">
+                                    <strong>@post.UserName</strong> - <small>@post.CreatedAt.ToString("g")</small>
+                                    <p class="mt-2">@post.Content</p>
+                                </li>
+                }
+                    </ul>
+        }
+        else
+        {
+                    <p>You haven't posted anything yet.</p>
+        }
+        </div>
 
     @Html.AntiForgeryToken()
 
@@ -48,12 +88,11 @@
                     });
                 });
             </script>
+    }
 }
-} else
+else
 {
         <script type="text/javascript">
             window.location.href = "/Identity/Account/Login";
         </script>
 }
-
-
