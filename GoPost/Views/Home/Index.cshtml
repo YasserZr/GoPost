@@ -1,8 +1,59 @@
-﻿@{
+﻿@model List<UserSuggestionViewModel>
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@if (User.Identity.IsAuthenticated)
+{
+        <div class="mt-4">
+        <h4>People you may know</h4>
+        <ul id="suggestionList">
+            @foreach (var user in Model)
+            {
+                        <li id="user-@user.UserId">
+                            <strong>@user.UserName</strong>
+                            <button class="btn btn-sm btn-primary follow-btn" data-user-id="@user.UserId">Follow</button>
+                        </li>
+            }
+        </ul>
+    </div>
+
+    @Html.AntiForgeryToken()
+
+    @section Scripts {
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+                $.ajaxSetup({
+                    headers: {
+                        'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
+                    }
+                });
+
+                $(document).ready(function () {
+                    $(".follow-btn").click(function () {
+                        var btn = $(this);
+                        var userId = btn.data("user-id");
+
+                        $.ajax({
+                            url: "/Follows/FollowUser",
+                            type: "POST",
+                            data: { userIdToFollow: userId },
+                            success: function () {
+                                $("#user-" + userId).fadeOut(300, function () { $(this).remove(); });
+                            },
+                            error: function () {
+                                alert("Error following user.");
+                            }
+                        });
+                    });
+                });
+            </script>
+}
+} else
+{
+        <script type="text/javascript">
+            window.location.href = "/Identity/Account/Login";
+        </script>
+}
+
+

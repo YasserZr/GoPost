@@ -20,6 +20,7 @@ namespace GoPost.Data
         public DbSet<PostFile> PostFiles { get; set; }
 
 
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
