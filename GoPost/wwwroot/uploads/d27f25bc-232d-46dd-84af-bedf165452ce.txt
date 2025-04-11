@@ -1,0 +1,5 @@
+EVALUATE
+FILTER(
+    VALUES(bi_date),
+    ISBLANK(bi_date[MonthName]) || ISBLANK(bi_date[MonthNo]) || ISBLANK(bi_date[Quarter])  -- Filtrer les valeurs NULL
+)

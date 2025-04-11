@@ -1,0 +1,11 @@
+Code initial: 
+- Ecrire le code c# des classes
+(annotation, relations)
+- Rajouter les packages nécéssaires:
+ > Entity framework core > SQL server
+ > Entity Framework.core > tools
+
+-Migration: ApplicationDBcontext (chaine de carac)
+  >appsetting.json
+  > Add-Migration mig1
+  >Update-database  

@@ -224,7 +224,7 @@ namespace GoPost.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Content,UserId,ImagePath")] Post post, IFormFile imageFile, List<IFormFile> newFiles, List<int> fileDeleteIds)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Content,UserId,ImagePath")] Post post, IFormFile imageFile, List<IFormFile> newFiles, List<int> fileDeleteIds)
         {
             if (id != post.Id)
             {
@@ -246,6 +246,8 @@ namespace GoPost.Controllers
             {
                 return NotFound();
             }
+            // Update the title of the post
+            existingPost.Title = post.Title;
 
             // Update the content of the post
             existingPost.Content = post.Content;
