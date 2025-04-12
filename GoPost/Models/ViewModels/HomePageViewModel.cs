@@ -3,7 +3,7 @@
     public class HomePageViewModel
     {
         public List<UserSuggestionViewModel> SuggestedUsers { get; set; }
-        public List<PostViewModel> FollowingPosts { get; set; }
-        public List<PostViewModel> CurrentUserPosts { get; set; }
+        public List<Post> FollowingPosts { get; set; }
+        public List<Post> CurrentUserPosts { get; set; }
     }
 }

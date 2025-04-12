@@ -11,6 +11,6 @@
         public string Bio { get; set; } // Optional
         public string ProfileImageUrl { get; set; } // Optional
 
-        public List<Post> Posts { get; set; } // User's posts
+        public List<Post> Posts { get; set; }
     }
 }

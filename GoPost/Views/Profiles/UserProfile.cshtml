@@ -12,7 +12,7 @@
         </div>
 
         <div class="mt-3 d-flex gap-3">
-            <span><strong>@Model.FollowersCount</strong> Followers</span>
+            <span id="followersCount"><strong>@Model.FollowersCount</strong> Followers</span>
             <span><strong>@Model.FollowingCount</strong> Following</span>
         </div>
 
@@ -26,33 +26,134 @@
 
         <div class="mt-3">
             <h4>Posts</h4>
-            <div class="row row-cols-1 g-3">
+            <ul class="list-group">
                 @foreach (var post in Model.Posts)
                 {
-                        <div class="col">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">@post.Title</h5>
-                                    <p class="card-text">@post.Content</p>
-                                    </div>
+                        <li class="list-group-item mb-3 p-4 border rounded-lg shadow-md post-item" data-post-id="@post.Id" style="cursor: pointer;">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <strong class="text-primary">@Model.UserName</strong>
+                                    <small class="text-muted"> - @post.CreatedAt.ToString("g")</small>
+                                    <p class="mt-2">@post.Content</p>
+                                </div>
                             </div>
-                        </div>
+                            <div class="mt-3 d-flex align-items-center">
+                                <span class="me-2">
+                                    <i class="bi bi-chat-dots"></i> <span class="comment-count" data-post-id="@post.Id">0</span> Comments
+                                </span>
+                                <span>
+                                    <i class="bi bi-heart"></i> <span class="like-count" data-post-id="@post.Id">0</span> Likes
+                                </span>
+                            </div>
+                            <div class="comments-section mt-3" id="comments-@post.Id" style="display: none;">
+                            </div>
+                        </li>
                 }
-            </div>
+            </ul>
+            @if (!Model.Posts.Any())
+            {
+                    <p class="text-muted mt-2">No posts yet.</p>
+            }
         </div>
     </div>
 </div>
 
 @section Scripts {
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <script>
-            $('#followBtn').click(function () {
-                const btn = $(this);
-                const userId = btn.data('user-id');
+            $(document).ready(function () {
+                $('#followBtn').click(function () {
+                    const btn = $(this);
+                    const userId = btn.data('user-id');
 
-                $.post('/Follows/ToggleFollow', { userIdToFollow: userId }, function (res) {
-                    btn.text(res.isFollowed ? "Unfollow" : "Follow");
-                    $('#followersCount').text(res.followersCount);
+                    $.post('/Follows/ToggleFollow', { userIdToFollow: userId }, function (res) {
+                        btn.text(res.isFollowed ? "Unfollow" : "Follow");
+                        $('#followersCount').text(res.followersCount);
+                    });
                 });
+
+                function initializeLikeCounts() {
+                    $('.like-count').each(function() {
+                        var postId = $(this).data('post-id');
+                        var likeCountSpan = $(this);
+                        $.ajax({
+                            url: `/Reactions/GetLikeCount?postId=${postId}`,
+                            type: "GET",
+                            success: function (data) {
+                                likeCountSpan.text(data.likeCount);
+                            },
+                            error: function () {
+                                console.error("Error fetching like count for post: " + postId);
+                            }
+                        });
+                    });
+                }
+
+                function initializeCommentCounts() {
+                    $('.comment-count').each(function() {
+                        var postId = $(this).data('post-id');
+                        var commentCountSpan = $(this);
+                        $.ajax({
+                            url: `/Comments/GetCommentCount?postId=${postId}`,
+                            type: "GET",
+                            success: function (data) {
+                                commentCountSpan.text(data.commentCount);
+                            },
+                            error: function () {
+                                console.error("Error fetching comment count for post: " + postId);
+                            }
+                        });
+                    });
+                }
+
+                function loadComments(postId) {
+                    var commentsSection = $('#comments-' + postId);
+                    $.ajax({
+                        url: `/Comments/GetComments?postId=${postId}`,
+                        type: "GET",
+                        success: function (comments) {
+                            commentsSection.empty();
+                            if (comments && comments.length > 0) {
+                                $.each(comments, function (index, comment) {
+                                    var commentHtml = `
+                                        <div class="comment p-2 mb-2 border-bottom">
+                                            <strong>${comment.userName}</strong>: ${comment.content}
+                                            <small class="text-muted"> - ${new Date(comment.createdAt).toLocaleTimeString()} ${new Date(comment.createdAt).toLocaleDateString()}</small>
+                                        </div>
+                                    `;
+                                    commentsSection.append(commentHtml);
+                                });
+                            } else {
+                                commentsSection.append('<p class="text-muted">No comments yet.</p>');
+                            }
+                        },
+                        error: function () {
+                            alert("Failed to load comments.");
+                        }
+                    });
+                }
+
+                $(document).on('click', '.comment-count', function (e) {
+                    e.stopPropagation();
+                    var postId = $(this).data('post-id');
+                    var commentsSection = $('#comments-' + postId);
+
+                    if (commentsSection.is(':visible')) {
+                        commentsSection.slideUp();
+                    } else {
+                        commentsSection.slideDown();
+                        loadComments(postId);
+                    }
+                });
+
+                $(document).on('click', '.post-item', function() {
+                    var postId = $(this).data('post-id');
+                    window.location.href = '/Posts/Details/' + postId;
+                });
+
+                initializeLikeCounts();
+                initializeCommentCounts();
             });
         </script>
 }
