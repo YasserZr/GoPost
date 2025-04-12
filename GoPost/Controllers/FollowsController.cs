@@ -91,6 +91,52 @@ namespace GoPost.Controllers
             });
 
         }
+
+        // New methods to get follower and following counts
+        [HttpGet]
+        public async Task<IActionResult> GetFollowerCount(string userId)
+        {
+            var followerCount = await _context.Follows.CountAsync(f => f.FolloweeId == userId);
+            return Ok(followerCount);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetFollowingCount(string userId)
+        {
+            var followingCount = await _context.Follows.CountAsync(f => f.FollowerId == userId);
+            return Ok(followingCount);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetFollowers(string userId)
+        {
+            var followers = await _context.Follows
+                .Where(f => f.FolloweeId == userId)
+                .Include(f => f.Follower) // Include the Follower (ApplicationUser)
+                .Select(f => new
+                {
+                    UserId = f.FollowerId,
+                    UserName = f.Follower.UserName // Access properties of the Follower
+                })
+                .ToListAsync();
+
+            return Json(followers);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetFollowing(string userId)
+        {
+            var following = await _context.Follows
+                .Where(f => f.FollowerId == userId)
+                .Include(f => f.Followee)  // Include the Followee
+                .Select(f => new
+                {
+                    UserId = f.FolloweeId,
+                    UserName = f.Followee.UserName
+                })
+                .ToListAsync();
+            return Json(following);
+        }
     }
 
     
