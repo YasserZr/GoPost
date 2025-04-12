@@ -28,15 +28,15 @@ namespace GoPost.Controllers
             // Get Suggested users
             var suggestedUsers = await _context.Users
             .Where(u => u.Id != currentUserId &&
-                    !_context.Follows.Any(f => f.FollowerId == currentUserId && f.FolloweeId == u.Id))
-                .Take(5)
-                .Select(u => new UserSuggestionViewModel
-                {
-                    UserId = u.Id,
-                    UserName = u.UserName,
-                    IsFollowed = false // optional, if you want to support toggling later
-                })
-                .ToListAsync();
+                        !_context.Follows.Any(f => f.FollowerId == currentUserId && f.FolloweeId == u.Id))
+                    .Take(15)
+                    .Select(u => new UserSuggestionViewModel
+                    {
+                        UserId = u.Id,
+                        UserName = u.UserName,
+                        IsFollowed = false // optional, if you want to support toggling later
+                    })
+                    .ToListAsync();
 
             // Get recent posts of followed users
             var followingPosts = await _context.Follows
@@ -95,6 +95,31 @@ namespace GoPost.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        // New Action to get Following Posts
+        public async Task<IActionResult> GetFollowingPosts()
+        {
+            var currentUserId = _userManager.GetUserId(User);
+
+            var followingPosts = await _context.Follows
+                .Where(f => f.FollowerId == currentUserId)
+                .SelectMany(f => _context.Posts
+                    .Where(p => p.UserId == f.FolloweeId)
+                    .OrderByDescending(p => p.CreatedAt)
+                    .Take(3)
+                    .Select(p => new
+                    {
+                        PostId = p.Id,
+                        Content = p.Content,
+                        CreatedAt = p.CreatedAt,
+                        UserName = _context.Users.Where(u => u.Id == p.UserId).Select(u => u.UserName).FirstOrDefault()
+                    }))
+                .OrderByDescending(p => p.CreatedAt)
+                .Take(3)
+                .ToListAsync();
+
+            return Json(followingPosts);
         }
     }
 }

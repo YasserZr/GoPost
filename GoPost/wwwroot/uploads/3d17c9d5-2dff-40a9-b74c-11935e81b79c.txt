@@ -1,5 +1,0 @@
-DS:
---> Diagramme de classes
-class: cours 
-
-1 - prepare 3 packages before coming to ds + prepare the database connection
