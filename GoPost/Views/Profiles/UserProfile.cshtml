@@ -1,0 +1,58 @@
+﻿@model GoPost.Models.ViewModels.UserProfileViewModel
+
+<div class="container mt-4">
+    <div class="card p-4 shadow-sm">
+        <div class="d-flex align-items-center">
+            <img src="@Model.ProfileImageUrl ?? "/images/default-profile.png"" alt="Profile"
+                 class="rounded-circle me-3" width="80" height="80" />
+            <div>
+                <h3>@Model.UserName</h3>
+                <p>@Model.Email</p>
+            </div>
+        </div>
+
+        <div class="mt-3 d-flex gap-3">
+            <span><strong>@Model.FollowersCount</strong> Followers</span>
+            <span><strong>@Model.FollowingCount</strong> Following</span>
+        </div>
+
+        @if (ViewData["IsOwnProfile"] == null || (bool)ViewData["IsOwnProfile"] == false)
+        {
+                <button id="followBtn" class="btn btn-primary mt-3"
+                        data-user-id="@Model.UserId">
+                @(Model.IsFollowed ? "Unfollow" : "Follow")
+                </button>
+        }
+
+        <div class="mt-3">
+            <h4>Posts</h4>
+            <div class="row row-cols-1 g-3">
+                @foreach (var post in Model.Posts)
+                {
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">@post.Title</h5>
+                                    <p class="card-text">@post.Content</p>
+                                    </div>
+                            </div>
+                        </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+        <script>
+            $('#followBtn').click(function () {
+                const btn = $(this);
+                const userId = btn.data('user-id');
+
+                $.post('/Follows/ToggleFollow', { userIdToFollow: userId }, function (res) {
+                    btn.text(res.isFollowed ? "Unfollow" : "Follow");
+                    $('#followersCount').text(res.followersCount);
+                });
+            });
+        </script>
+}

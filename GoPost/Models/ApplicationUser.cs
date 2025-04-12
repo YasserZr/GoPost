@@ -12,4 +12,6 @@ public class ApplicationUser : IdentityUser
     public ICollection<Notification> SentNotifications { get; set; }
     public ICollection<Notification> ReceivedNotifications { get; set; }
 
+    public string ProfileImageUrl { get; set; }
+
 }

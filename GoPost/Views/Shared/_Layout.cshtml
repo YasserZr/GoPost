@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using GoPost.Models
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> _userManager
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -30,6 +33,11 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-controller="Posts" asp-action="Index">My Posts</a>
                             </li>
+
+                            <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-controller="Profiles" asp-action="Profile" asp-route-userId="@_userManager.GetUserId(User)">My Profile</a>
+                            </li>
+
                         }
                     </ul>
                     <partial name="_LoginPartial" />
