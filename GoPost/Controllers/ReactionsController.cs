@@ -117,4 +117,15 @@ public class ReactionsController : Controller
         // Return the dislike count as JSON to update the UI
         return Json(dislikeCount);
     }
+
+    [HttpGet]
+    [AllowAnonymous] // Or require authorization if needed
+    public async Task<IActionResult> GetLikeCount(int postId)
+    {
+        var likeCount = await _context.Reactions
+            .Where(r => r.PostId == postId && r.Type == "like")
+            .CountAsync();
+
+        return Json(new { likeCount = likeCount });
+    }
 }

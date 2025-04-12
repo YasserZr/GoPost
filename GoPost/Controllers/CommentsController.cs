@@ -67,5 +67,35 @@ namespace GoPost.Controllers
 
             return Json(newComment); // Return the new comment as JSON
         }
+
+        [HttpGet]
+        [AllowAnonymous] // Or require authorization if needed
+        public async Task<IActionResult> GetCommentCount(int postId)
+        {
+            var commentCount = await _context.Comments
+                .Where(c => c.PostId == postId)
+                .CountAsync();
+
+            return Json(new { commentCount = commentCount });
+        }
+
+        [HttpGet]
+        [AllowAnonymous] // Or require authorization if needed
+        public async Task<IActionResult> GetComments(int postId)
+        {
+            var comments = await _context.Comments
+                .Where(c => c.PostId == postId)
+                .Include(c => c.User)
+                .OrderByDescending(c => c.CreatedAt)
+                .Select(c => new
+                {
+                    userName = c.User.UserName,
+                    content = c.Content,
+                    createdAt = c.CreatedAt
+                })
+                .ToListAsync();
+
+            return Json(comments);
+        }
     }
 }

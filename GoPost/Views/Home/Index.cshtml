@@ -190,6 +190,10 @@
                                         window.location.href = '/Posts/Details/' + postId;
                                     });
 
+                                    // Initialize like and comment counts for the newly added post
+                                    initializeLikeCounts();
+                                    initializeCommentCounts();
+
                                 } else {
                                     alert("Failed to add post.");
                                 }
@@ -237,6 +241,9 @@
                                             window.location.href = '/Posts/Details/' + postId;
                                         });
                                     });
+                                    // Initialize like and comment counts for the updated following posts
+                                    initializeLikeCounts();
+                                    initializeCommentCounts();
                                 } else {
                                     $("#followingPostsList").append('<li class="list-group-item">No recent posts from the users you are following.</li>');
                                 }
@@ -328,36 +335,40 @@
                     function initializeLikeCounts() {
                         $('.like-count').each(function() {
                             var postId = $(this).data('post-id');
+                            var likeCountSpan = $(this); // Store the reference to the current element
                             $.ajax({
-                                url: `/Likes/GetLikeCount?postId=${postId}`, // Replace with your actual endpoint
+                                url: `/Reactions/GetLikeCount?postId=${postId}`, // Updated URL to ReactionsController
                                 type: "GET",
                                 success: function (data) {
-                                    $(this).text(data.likeCount);
-                                }.bind(this),
+                                    likeCountSpan.text(data.likeCount); // Use the stored reference
+                                },
                                 error: function () {
                                     console.error("Error fetching like count for post: " + postId);
                                 }
                             });
                         });
                     }
-                    initializeLikeCounts();
 
                     // Initialize comment counts on page load (if you have an endpoint for this)
                     function initializeCommentCounts() {
                         $('.comment-count').each(function() {
                             var postId = $(this).data('post-id');
+                            var commentCountSpan = $(this); // Store the reference
                             $.ajax({
-                                url: `/Comments/GetCommentCount?postId=${postId}`, // Replace with your actual endpoint
+                                url: `/Comments/GetCommentCount?postId=${postId}`, // Your comment count endpoint
                                 type: "GET",
                                 success: function (data) {
-                                    $(this).text(data.commentCount);
-                                }.bind(this),
+                                    commentCountSpan.text(data.commentCount); // Use the stored reference
+                                },
                                 error: function () {
                                     console.error("Error fetching comment count for post: " + postId);
                                 }
                             });
                         });
                     }
+
+                    // Call the initialization functions when the document is ready
+                    initializeLikeCounts();
                     initializeCommentCounts();
 
                 });
