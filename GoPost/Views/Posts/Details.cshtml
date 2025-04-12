@@ -87,7 +87,6 @@
             async function likePost(postId) {
                 const likeButton = document.getElementById("likeButton");
                 const likeCountElement = document.getElementById("likeCount");
-
                 const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
 
                 const response = await fetch(`/Reactions/Like`, {
@@ -106,7 +105,6 @@
                 }
             }
 
-            // Comment form AJAX (previously added)
             document.getElementById("commentForm").addEventListener("submit", async function (e) {
                 e.preventDefault();
 
@@ -129,8 +127,37 @@
                 });
 
                 if (response.ok) {
-                    const updatedComments = await response.text();
-                    document.getElementById("commentsList").innerHTML = updatedComments;
+                    const comment = await response.json(); // Expect the new comment object
+
+                    // Create the HTML for the new comment
+                    const newCommentHtml = `
+                        <li class="list-group-item">
+                            <strong>${comment.userName}</strong>: ${comment.content}
+                            <br />
+                            <small class="text-muted">${new Date(comment.createdAt).toLocaleString()}</small>
+                        </li>
+                    `;
+
+                    // Append the new comment to the list
+                    const commentsList = document.getElementById("commentsList").querySelector(".list-group");
+                    if (commentsList) {
+                        commentsList.appendChild(new DOMParser().parseFromString(newCommentHtml, 'text/html').body.firstChild);
+                    } else {
+                        // If there were no comments before, create the ul element
+                        const newUl = document.createElement('ul');
+                        newUl.className = 'list-group';
+                        newUl.innerHTML = newCommentHtml;
+                        document.getElementById("commentsList").innerHTML = ''; // Clear "No comments yet."
+                        document.getElementById("commentsList").appendChild(newUl);
+                    }
+
+                    // Update the comment count in the heading
+                    const commentCountElement = document.querySelector('h5.mt-4');
+                    if (commentCountElement) {
+                        const currentCount = parseInt(commentCountElement.textContent.match(/\((\d+)\)/)?.[1] || '0');
+                        commentCountElement.textContent = `Comments (${currentCount + 1})`;
+                    }
+
                     document.getElementById("commentContent").value = "";
                 } else {
                     alert("Something went wrong. Please try again.");

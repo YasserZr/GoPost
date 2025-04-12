@@ -15,10 +15,10 @@
                     <ul id="suggestionList" class="list-unstyled d-flex flex-nowrap" style="padding-left: 0; margin-bottom: 0; transition: transform 0.3s ease-in-out;">
                     @foreach (var user in Model.SuggestedUsers)
                     {
-                                <li id="user-@user.UserId" class="me-2 p-2 border rounded-md shadow-sm flex-shrink-0" style="width: 250px;">
-                                    <strong>@user.UserName</strong>
-                                    <button class="btn btn-sm btn-primary follow-btn" data-user-id="@user.UserId">Follow</button>
-                                </li>
+                            <li id="user-@user.UserId" class="me-2 p-2 border rounded-md shadow-sm flex-shrink-0" style="width: 250px;">
+                                <strong>@user.UserName</strong>
+                                <button class="btn btn-sm btn-primary follow-btn" data-user-id="@user.UserId">Follow</button>
+                            </li>
                     }
                     </ul>
                 </div>
@@ -35,31 +35,30 @@
             {
                 @foreach (var post in Model.FollowingPosts)
                 {
-                                <li class="list-group-item mb-3 p-4 border rounded-lg shadow-md">
-                                    <div class="d-flex justify-content-between align-items-start">
-                                        <div>
-                                            <strong class="text-primary">@post.UserName</strong>
-                                            <small class="text-muted"> - @post.CreatedAt.ToString("g")</small>
-                                            <p class="mt-2">@post.Content</p>
-                                        </div>
+                            <li class="list-group-item mb-3 p-4 border rounded-lg shadow-md post-item" data-post-id="@post.PostId" style="cursor: pointer;">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <strong class="text-primary">@post.UserName</strong>
+                                        <small class="text-muted"> - @post.CreatedAt.ToString("g")</small>
+                                        <p class="mt-2">@post.Content</p>
                                     </div>
-                                    <div class="mt-3 d-flex align-items-center">
-                                        <button class="btn btn-sm btn-outline-secondary me-2 comment-btn" data-post-id="@post.PostId">
-                                            <i class="bi bi-chat-dots"></i> Comment
-                                        </button>
-                                        <button class="btn btn-sm btn-outline-danger like-btn" data-post-id="@post.PostId">
-                                            <i class="bi bi-heart"></i> Like
-                                        </button>
-                                        <span class="like-count text-muted ms-1" data-post-id="@post.PostId">0 Likes</span>
-                                    </div>
-                                    <div class="comments-section mt-3" id="comments-@post.PostId" style="display: none;">
-                                    </div>
-                                </li>
+                                </div>
+                                <div class="mt-3 d-flex align-items-center">
+                                    <span class="me-2">
+                                        <i class="bi bi-chat-dots"></i> <span class="comment-count" data-post-id="@post.PostId">0</span> Comments
+                                    </span>
+                                    <span>
+                                        <i class="bi bi-heart"></i> <span class="like-count" data-post-id="@post.PostId">0</span> Likes
+                                    </span>
+                                </div>
+                                <div class="comments-section mt-3" id="comments-@post.PostId" style="display: none;">
+                                </div>
+                            </li>
                 }
             }
             else
             {
-                        <li class="list-group-item">No recent posts from the users you are following.</li>
+                    <li class="list-group-item">No recent posts from the users you are following.</li>
             }
             </ul>
         </div>
@@ -71,31 +70,30 @@
             {
                 @foreach (var post in Model.CurrentUserPosts)
                 {
-                                <li class="list-group-item mb-3 p-4 border rounded-lg shadow-md">
-                                    <div class="d-flex justify-content-between align-items-start">
-                                        <div>
-                                            <strong class="text-primary">@post.UserName</strong>
-                                            <small class="text-muted"> - @post.CreatedAt.ToString("g")</small>
-                                            <p class="mt-2">@post.Content</p>
-                                        </div>
+                            <li class="list-group-item mb-3 p-4 border rounded-lg shadow-md post-item" data-post-id="@post.PostId" style="cursor: pointer;">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <strong class="text-primary">@post.UserName</strong>
+                                        <small class="text-muted"> - @post.CreatedAt.ToString("g")</small>
+                                        <p class="mt-2">@post.Content</p>
                                     </div>
-                                    <div class="mt-3 d-flex align-items-center">
-                                        <button class="btn btn-sm btn-outline-secondary me-2 comment-btn" data-post-id="@post.PostId">
-                                            <i class="bi bi-chat-dots"></i> Comment
-                                        </button>
-                                        <button class="btn btn-sm btn-outline-danger like-btn" data-post-id="@post.PostId">
-                                            <i class="bi bi-heart"></i> Like
-                                        </button>
-                                        <span class="like-count text-muted ms-1" data-post-id="@post.PostId">0 Likes</span>
-                                    </div>
-                                    <div class="comments-section mt-3" id="comments-@post.PostId" style="display: none;">
-                                    </div>
-                                </li>
+                                </div>
+                                <div class="mt-3 d-flex align-items-center">
+                                    <span class="me-2">
+                                        <i class="bi bi-chat-dots"></i> <span class="comment-count" data-post-id="@post.PostId">0</span> Comments
+                                    </span>
+                                    <span>
+                                        <i class="bi bi-heart"></i> <span class="like-count" data-post-id="@post.PostId">0</span> Likes
+                                    </span>
+                                </div>
+                                <div class="comments-section mt-3" id="comments-@post.PostId" style="display: none;">
+                                </div>
+                            </li>
                 }
             }
             else
             {
-                        <li class="list-group-item">You haven't posted anything yet.</li>
+                    <li class="list-group-item">You haven't posted anything yet.</li>
             }
             </ul>
         </div>
@@ -152,7 +150,7 @@
                                 if (newPost) {
                                     // Create the HTML for the new post
                                     var newPostHtml = `
-                                         <li class="list-group-item mb-3 p-4 border rounded-lg shadow-md">
+                                        <li class="list-group-item mb-3 p-4 border rounded-lg shadow-md post-item" data-post-id="${newPost.postId}" style="cursor: pointer;">
                                             <div class="d-flex justify-content-between align-items-start">
                                                 <div>
                                                     <strong class="text-primary">${newPost.userName}</strong> - <small>${new Date(newPost.createdAt).toLocaleTimeString()} ${new Date(newPost.createdAt).toLocaleDateString()}</small>
@@ -160,16 +158,15 @@
                                                 </div>
                                             </div>
                                             <div class="mt-3 d-flex align-items-center">
-                                                <button class="btn btn-sm btn-outline-secondary me-2 comment-btn" data-post-id="${newPost.postId}">
-                                                    <i class="bi bi-chat-dots"></i> Comment
-                                                </button>
-                                                <button class="btn btn-sm btn-outline-danger like-btn" data-post-id="${newPost.postId}">
-                                                    <i class="bi bi-heart"></i> Like
-                                                </button>
-                                                <span class="like-count text-muted ms-1" data-post-id="${newPost.postId}">0 Likes</span>
+                                                <span class="me-2">
+                                                    <i class="bi bi-chat-dots"></i> <span class="comment-count" data-post-id="${newPost.postId}">0</span> Comments
+                                                </span>
+                                                <span>
+                                                    <i class="bi bi-heart"></i> <span class="like-count" data-post-id="${newPost.postId}">0</span> Likes
+                                                </span>
                                             </div>
                                             <div class="comments-section mt-3" id="comments-${newPost.postId}" style="display: none;">
-                                                </div>
+                                            </div>
                                         </li>
                                     `;
 
@@ -187,6 +184,12 @@
                                     //update following post
                                     updateFollowingPosts();
 
+                                    // Re-bind the click event for the new post item
+                                    $('.post-item[data-post-id="' + newPost.postId + '"]').on('click', function() {
+                                        var postId = $(this).data('post-id');
+                                        window.location.href = '/Posts/Details/' + postId;
+                                    });
+
                                 } else {
                                     alert("Failed to add post.");
                                 }
@@ -196,6 +199,7 @@
                             }
                         });
                     });
+
                     function updateFollowingPosts() {
                         $.ajax({
                             url: "/Home/GetFollowingPosts", // New action to get following posts
@@ -206,7 +210,7 @@
                                 if (followingPosts && followingPosts.length > 0) {
                                     $.each(followingPosts, function (index, post) {
                                         var postHtml = `
-                                             <li class="list-group-item mb-3 p-4 border rounded-lg shadow-md">
+                                            <li class="list-group-item mb-3 p-4 border rounded-lg shadow-md post-item" data-post-id="${post.postId}" style="cursor: pointer;">
                                                 <div class="d-flex justify-content-between align-items-start">
                                                     <div>
                                                         <strong class="text-primary">${post.userName}</strong> - <small>${new Date(post.createdAt).toLocaleTimeString()} ${new Date(post.createdAt).toLocaleDateString()}</small>
@@ -214,19 +218,24 @@
                                                     </div>
                                                 </div>
                                                 <div class="mt-3 d-flex align-items-center">
-                                                    <button class="btn btn-sm btn-outline-secondary me-2 comment-btn" data-post-id="${post.postId}">
-                                                        <i class="bi bi-chat-dots"></i> Comment
-                                                    </button>
-                                                    <button class="btn btn-sm btn-outline-danger like-btn" data-post-id="${post.postId}">
-                                                        <i class="bi bi-heart"></i> Like
-                                                    </button>
-                                                    <span class="like-count text-muted ms-1" data-post-id="${post.postId}">0 Likes</span>
+                                                    <span class="me-2">
+                                                        <i class="bi bi-chat-dots"></i> <span class="comment-count" data-post-id="${post.postId}">0</span> Comments
+                                                    </span>
+                                                    <span>
+                                                        <i class="bi bi-heart"></i> <span class="like-count" data-post-id="${post.postId}">0</span> Likes
+                                                    </span>
                                                 </div>
                                                 <div class="comments-section mt-3" id="comments-${post.postId}" style="display: none;">
-                                                    </div>
+                                                </div>
                                             </li>
                                         `;
                                         $("#followingPostsList").append(postHtml);
+
+                                        // Re-bind the click event for the new post item
+                                        $('.post-item[data-post-id="' + post.postId + '"]').on('click', function() {
+                                            var postId = $(this).data('post-id');
+                                            window.location.href = '/Posts/Details/' + postId;
+                                        });
                                     });
                                 } else {
                                     $("#followingPostsList").append('<li class="list-group-item">No recent posts from the users you are following.</li>');
@@ -238,8 +247,9 @@
                         });
                     }
 
-                    // Event handler for comment button clicks
-                    $(document).on('click', '.comment-btn', function () {
+                    // Event handler for comment button clicks (now just toggling visibility)
+                    $(document).on('click', '.comment-count', function (e) {
+                        e.stopPropagation(); // Prevent the click from triggering the post item click
                         var postId = $(this).data('post-id');
                         var commentsSection = $('#comments-' + postId);
 
@@ -252,34 +262,12 @@
                         }
                     });
 
-                    // Event handler for like button clicks
-                    $(document).on('click', '.like-btn', function () {
-                        var btn = $(this);
-                        var postId = btn.data('post-id');
-                        var likeCountSpan = $(`.like-count[data-post-id="${postId}"]`);
-
-                        $.ajax({
-                            url: "/Likes/LikePost", // Replace with your actual endpoint
-                            type: "POST",
-                            data: { postId: postId },
-                            success: function (data) {
-                                if (data.success) {
-                                    likeCountSpan.text(data.likeCount + " Likes"); // Update the count
-                                    if (btn.hasClass('btn-outline-danger')) {
-                                        btn.removeClass('btn-outline-danger').addClass('btn-danger');
-                                    }
-                                    else{
-                                        btn.removeClass('btn-danger').addClass('btn-outline-danger');
-                                    }
-
-                                } else {
-                                    alert("Failed to like post: " + data.message);
-                                }
-                            },
-                            error: function () {
-                                alert("Error liking post.");
-                            }
-                        });
+                    // Event handler for like count clicks (now just showing the count)
+                    $(document).on('click', '.like-count', function (e) {
+                        e.stopPropagation(); // Prevent the click from triggering the post item click
+                        // You can add functionality here to show who liked the post if needed
+                        var postId = $(this).data('post-id');
+                        // For now, we're just preventing the default button behavior
                     });
 
                     function loadComments(postId) {
@@ -323,6 +311,55 @@
                     scrollRightBtn.addEventListener('click', () => {
                         suggestionContainer.scrollLeft += itemWidth * 3; // Scroll by 3 items
                     });
+
+                    // Add click event to the post items to redirect to details
+                    $(document).on('click', '.post-item', function() {
+                        var postId = $(this).data('post-id');
+                        window.location.href = '/Posts/Details/' + postId;
+                    });
+
+                    // Prevent default action for the now non-interactive buttons
+                    $(document).on('click', '.comment-btn, .like-btn', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation(); // Stop the click from propagating to the parent li
+                    });
+
+                    // Initialize like counts on page load
+                    function initializeLikeCounts() {
+                        $('.like-count').each(function() {
+                            var postId = $(this).data('post-id');
+                            $.ajax({
+                                url: `/Likes/GetLikeCount?postId=${postId}`, // Replace with your actual endpoint
+                                type: "GET",
+                                success: function (data) {
+                                    $(this).text(data.likeCount);
+                                }.bind(this),
+                                error: function () {
+                                    console.error("Error fetching like count for post: " + postId);
+                                }
+                            });
+                        });
+                    }
+                    initializeLikeCounts();
+
+                    // Initialize comment counts on page load (if you have an endpoint for this)
+                    function initializeCommentCounts() {
+                        $('.comment-count').each(function() {
+                            var postId = $(this).data('post-id');
+                            $.ajax({
+                                url: `/Comments/GetCommentCount?postId=${postId}`, // Replace with your actual endpoint
+                                type: "GET",
+                                success: function (data) {
+                                    $(this).text(data.commentCount);
+                                }.bind(this),
+                                error: function () {
+                                    console.error("Error fetching comment count for post: " + postId);
+                                }
+                            });
+                        });
+                    }
+                    initializeCommentCounts();
+
                 });
             </script>
     }

@@ -48,13 +48,24 @@ namespace GoPost.Controllers
             _context.Comments.Add(comment);
             await _context.SaveChangesAsync();
 
-            // Return the updated comment list as a partial view
-            var comments = _context.Comments
-                .Where(c => c.PostId == postId)
-                .OrderByDescending(c => c.CreatedAt)
-                .Include(c => c.User);
+            // Load the newly created comment with the user information
+            var newComment = await _context.Comments
+                .Where(c => c.Id == comment.Id)
+                .Include(c => c.User)
+                .Select(c => new // Project to a simpler object for JSON
+                {
+                    userName = c.User.UserName,
+                    content = c.Content,
+                    createdAt = c.CreatedAt
+                })
+                .FirstOrDefaultAsync();
 
-            return PartialView("_CommentsList", await comments.ToListAsync());
+            if (newComment == null)
+            {
+                return StatusCode(500, "Failed to retrieve the new comment.");
+            }
+
+            return Json(newComment); // Return the new comment as JSON
         }
     }
 }
