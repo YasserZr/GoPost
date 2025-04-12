@@ -1,4 +1,7 @@
 ﻿@model GoPost.Models.Post
+@using Microsoft.AspNetCore.Identity  // Add this using statement
+
+@inject UserManager<ApplicationUser> UserManager  // Inject UserManager
 
 @{
     ViewData["Title"] = "Delete";
@@ -30,10 +33,13 @@
             @Html.DisplayFor(model => model.User.Id)
         </dd>
     </dl>
-    
+
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        @{
+            string currentUserId = UserManager.GetUserId(User);
+        }
+        <a asp-controller="Profiles" asp-action="Profile" asp-route-userId="@currentUserId">Back to Profile</a>
     </form>
 </div>
