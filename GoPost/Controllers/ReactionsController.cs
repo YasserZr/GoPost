@@ -5,17 +5,20 @@ using GoPost.Models;
 using GoPost.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
+using GoPost.Controllers;
 
 [Authorize]
 public class ReactionsController : Controller
 {
     private readonly ApplicationDbContext _context;
     private readonly UserManager<ApplicationUser> _userManager;
+    
 
     public ReactionsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
     {
         _context = context;
         _userManager = userManager;
+        
     }
 
     [HttpPost]
@@ -28,6 +31,12 @@ public class ReactionsController : Controller
             return Unauthorized();
         }
 
+        var post = await _context.Posts.FindAsync(postId);
+        if (post == null)
+        {
+            return NotFound();
+        }
+
         var existingReaction = await _context.Reactions
             .FirstOrDefaultAsync(r => r.PostId == postId && r.UserId == user.Id && r.Type == "like");
 
@@ -35,6 +44,7 @@ public class ReactionsController : Controller
         {
             // If already liked, remove the like
             _context.Reactions.Remove(existingReaction);
+            _context.SaveChanges(); //simplified.
         }
         else
         {
@@ -45,6 +55,7 @@ public class ReactionsController : Controller
             if (existingDislike != null)
             {
                 _context.Reactions.Remove(existingDislike);
+                _context.SaveChanges(); //simplified.
             }
 
             // Add like
@@ -56,9 +67,17 @@ public class ReactionsController : Controller
             };
 
             _context.Reactions.Add(reaction);
+            _context.SaveChanges(); //simplified.
+
+            // 5.  Create a notification for the post owner (if they're not the current user).
+            if (post.UserId != user.Id)
+            {
+                var notificationsController = HttpContext.RequestServices.GetRequiredService<NotificationsController>(); //added
+                await notificationsController.CreateNotification(user.Id, post.UserId, "onReaction", $"{user.UserName} liked your post.");
+            }
         }
 
-        await _context.SaveChangesAsync();
+
 
         // Get the updated like count
         var likeCount = await _context.Reactions
@@ -77,6 +96,11 @@ public class ReactionsController : Controller
         {
             return Unauthorized();
         }
+        var post = await _context.Posts.FindAsync(postId);
+        if (post == null)
+        {
+            return NotFound();
+        }
 
         var existingReaction = await _context.Reactions
             .FirstOrDefaultAsync(r => r.PostId == postId && r.UserId == user.Id && r.Type == "dislike");
@@ -85,6 +109,7 @@ public class ReactionsController : Controller
         {
             // If already disliked, remove the dislike
             _context.Reactions.Remove(existingReaction);
+            _context.SaveChanges(); //simplified.
         }
         else
         {
@@ -95,6 +120,7 @@ public class ReactionsController : Controller
             if (existingLike != null)
             {
                 _context.Reactions.Remove(existingLike);
+                _context.SaveChanges(); //simplified
             }
 
             // Add dislike
@@ -106,9 +132,16 @@ public class ReactionsController : Controller
             };
 
             _context.Reactions.Add(reaction);
+            _context.SaveChanges(); //simplified
+
+            if (post.UserId != user.Id)
+            {
+                var notificationsController = HttpContext.RequestServices.GetRequiredService<NotificationsController>(); //added
+                await notificationsController.CreateNotification(user.Id, post.UserId, "onReaction", $"{user.UserName} disliked your post.");
+            }
         }
 
-        await _context.SaveChangesAsync();
+
 
         // Get the updated dislike count
         var dislikeCount = await _context.Reactions

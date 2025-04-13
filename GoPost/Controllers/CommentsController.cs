@@ -37,6 +37,8 @@ namespace GoPost.Controllers
                 return Unauthorized();
             }
 
+            var post = await _context.Posts.FindAsync(postId); //get post
+
             var comment = new Comment
             {
                 PostId = postId,
@@ -47,6 +49,14 @@ namespace GoPost.Controllers
 
             _context.Comments.Add(comment);
             await _context.SaveChangesAsync();
+
+            // Create notification for the post owner, if the commenter is not the owner
+            if (post != null && post.UserId != user.Id)
+            {
+                var notificationsController = HttpContext.RequestServices.GetRequiredService<NotificationsController>(); //added
+                await notificationsController.CreateNotification(user.Id, post.UserId, "onComment", $"{user.UserName} commented on your post: {content.Trim()}");
+
+            }
 
             // Load the newly created comment with the user information
             var newComment = await _context.Comments

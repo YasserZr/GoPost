@@ -1,5 +1,6 @@
 using GoPost.Data;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -43,6 +44,8 @@ builder.Services.ConfigureApplicationCookie(options =>
 
 // Add services to the container.  No Change here.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<GoPost.Controllers.NotificationsController>();
 
 var app = builder.Build();
 

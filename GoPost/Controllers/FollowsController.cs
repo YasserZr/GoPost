@@ -43,9 +43,17 @@ namespace GoPost.Controllers
                 };
                 _context.Follows.Add(follow);
                 await _context.SaveChangesAsync();
+
+                //send notification
+                var userToFollow = await _userManager.FindByIdAsync(userIdToFollow);
+                if (userToFollow != null)
+                {
+                    var notificationsController = HttpContext.RequestServices.GetRequiredService<NotificationsController>(); //added
+                    await notificationsController.CreateNotification(currentUserId, userIdToFollow, "onFollow", $"{User.Identity.Name} is now following you.");
+                }
             }
 
-            return Ok(); // <-- No redirect, just a success
+            return Ok();
         }
 
         [HttpPost]
@@ -67,6 +75,7 @@ namespace GoPost.Controllers
             if (follow != null)
             {
                 _context.Follows.Remove(follow);
+                await _context.SaveChangesAsync();
                 isFollowed = false;
             }
             else
@@ -76,10 +85,19 @@ namespace GoPost.Controllers
                     FollowerId = currentUserId,
                     FolloweeId = userIdToFollow
                 });
+                await _context.SaveChangesAsync();
                 isFollowed = true;
+
+                //send notification
+                var userToFollow = await _userManager.FindByIdAsync(userIdToFollow);
+                if (userToFollow != null)
+                {
+                    var notificationsController = HttpContext.RequestServices.GetRequiredService<NotificationsController>(); //added
+                    await notificationsController.CreateNotification(currentUserId, userIdToFollow, "onFollow", $"{User.Identity.Name} is now following you.");
+                }
             }
 
-            await _context.SaveChangesAsync();
+
 
             // You could also return follower count here if you want
             var followersCount = await _context.Follows.CountAsync(f => f.FolloweeId == userIdToFollow);
@@ -128,7 +146,7 @@ namespace GoPost.Controllers
         {
             var following = await _context.Follows
                 .Where(f => f.FollowerId == userId)
-                .Include(f => f.Followee)  // Include the Followee
+                .Include(f => f.Followee)    // Include the Followee
                 .Select(f => new
                 {
                     UserId = f.FolloweeId,
