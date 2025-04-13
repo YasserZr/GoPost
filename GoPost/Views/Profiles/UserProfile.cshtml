@@ -183,23 +183,10 @@
                 initializeLikeCounts();
                 initializeCommentCounts();
 
-                // Delete post
                 $(document).on('click', '.delete-post-btn', function (e) {
                     e.preventDefault();
                     var postId = $(this).data('post-id');
-                    if (confirm(postId)) {
-                            $.post('/Posts/DeleteConfirmed/' + postId, function (result) {
-                            if (result.success) {
-                                // Optionally remove the post from the UI
-                                $(this).closest('.post-item').remove();
-                                alert("Post deleted successfully!");
-                                window.location.reload();
-
-                            } else {
-                                alert("Failed to delete post.");
-                            }
-                        });
-                    }
+                    window.location.href = '/Posts/Delete/' + postId;
                 });
             });
         </script>

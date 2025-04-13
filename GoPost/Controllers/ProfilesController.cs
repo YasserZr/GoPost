@@ -34,7 +34,6 @@ namespace GoPost.Controllers
             // You can pass the user and posts to the view
             return View(user);
         }
-
         public async Task<IActionResult> Profile(string userId)
         {
             if (string.IsNullOrEmpty(userId))

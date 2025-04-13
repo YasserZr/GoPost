@@ -11,6 +11,7 @@ using GoPost.Data;
 using GoPost.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
+using GoPost.Models.ViewModels;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
 
@@ -40,15 +41,23 @@ namespace GoPost.Controllers
                 .Where(p => p.UserId == currentUserId)
                 .Include(p => p.User)
                 .OrderByDescending(p => p.CreatedAt)
-                .AsQueryable(); // 👈 This enables further chaining
+                .AsQueryable();
 
             if (!string.IsNullOrEmpty(searchString))
             {
                 postsQuery = postsQuery.Where(p => p.Title.Contains(searchString));
             }
 
-            var posts = await postsQuery.ToListAsync(); // 👈 Now we execute the query
-            return View(posts);
+            var posts = await postsQuery.ToListAsync();
+
+            // Create a UserProfileViewModel and populate it with the required data
+            var userProfileViewModel = new UserProfileViewModel
+            {
+                Posts = posts, // Assuming UserProfileViewModel has a property to hold the list of posts
+                               // Add other properties as needed, e.g., User information
+            };
+
+            return RedirectToAction("Profile", "Profiles", new { userId = currentUserId });
         }
 
 
