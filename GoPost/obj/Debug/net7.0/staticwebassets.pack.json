@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
+      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\defaults\\images\\default-avatar.png",
+      "PackagePath": "staticwebassets\\defaults\\images\\default-avatar.png"
+    },
+    {
       "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },

@@ -42,5 +42,12 @@ namespace GoPost.Controllers
 
             return Json(notifications);
         }
+
+        // Action to render the Notifications view
+        [HttpGet]
+        public IActionResult ViewNotifications()
+        {
+            return View("_Notifications"); // Returns the _Notifications.cshtml partial view
+        }
     }
 }
