@@ -1,6 +1,7 @@
 ﻿@using GoPost.Models
 @using Microsoft.AspNetCore.Identity
 @inject UserManager<ApplicationUser> _userManager
+@inject GoPost.Data.ApplicationDbContext _context
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,6 +26,10 @@
                     <ul class="navbar-nav flex-grow-1">
                         @if (User.Identity.IsAuthenticated)
                         {
+                            var userId = _userManager.GetUserId(User);
+                            var roleId = _context.Roles.FirstOrDefault(r => r.Name == "Admin")?.Id;
+                            var isAdmin = _context.UserRoles.Any(ur => ur.UserId == userId && ur.RoleId == roleId);
+
                             <form asp-controller="Profiles" asp-action="Search" method="get">
                                 <input type="text" name="query" placeholder="Search users..." required />
                                 <button type="submit">Search</button>
@@ -38,6 +43,13 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-controller="Notifications" asp-action="ViewNotifications">Notifications</a>
                             </li>
+                            @if (isAdmin)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-danger" asp-controller="Admin" asp-action="Dashboard">Admin Dashboard</a>
+                                </li>
+                            }
+
 
                         }
                     </ul>

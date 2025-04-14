@@ -16,7 +16,12 @@
                     @foreach (var user in Model.SuggestedUsers)
                     {
                             <li id="user-@user.UserId" class="me-2 p-2 border rounded-md shadow-sm flex-shrink-0" style="width: 250px;">
-                                <strong>@user.UserName</strong>
+                        
+                            <img src="@user.ProfileImageUrl" alt="Profile" width="50" height="50" />
+                            <a href="@Url.Action("Profile", "Profiles", new { userId = user.UserId })">
+                                    @user.UserName
+                            </a>
+                        
                                 <button class="btn btn-sm btn-primary follow-btn" data-user-id="@user.UserId">Follow</button>
                             </li>
                     }

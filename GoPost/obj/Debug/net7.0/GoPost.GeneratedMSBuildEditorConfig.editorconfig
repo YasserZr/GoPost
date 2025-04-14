@@ -24,6 +24,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/MSI/source/repos/GoPost/GoPost/Views/Admin/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGFzaGJvYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/MSI/source/repos/GoPost/GoPost/Views/Comments/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbWVudHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -110,6 +114,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/MSI/source/repos/GoPost/GoPost/Views/Profiles/UserProfile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZXNcVXNlclByb2ZpbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/source/repos/GoPost/GoPost/Views/Profiles/Users.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZXNcVXNlcnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/MSI/source/repos/GoPost/GoPost/Views/Reactions/Create.cshtml]

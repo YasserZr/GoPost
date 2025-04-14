@@ -12,5 +12,8 @@
         public string ProfileImageUrl { get; set; } // Optional
 
         public List<Post> Posts { get; set; }
+
+        // NEW: For Admin Panel (Lock/Unlock)
+        public bool IsLocked { get; set; }
     }
 }

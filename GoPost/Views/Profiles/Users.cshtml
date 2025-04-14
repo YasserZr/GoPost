@@ -1,0 +1,116 @@
+﻿@model List<GoPost.Models.ViewModels.UserProfileViewModel>
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Antiforgery
+
+@{
+    ViewData["Title"] = "Users";
+    var tokens = Antiforgery.GetAndStoreTokens(ViewContext.HttpContext);
+}
+
+<style>
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        z-index: 1;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .menu-button {
+        background: none;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    .user-card {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+
+        .user-card img {
+            border-radius: 50%;
+        }
+</style>
+
+<h2>Users</h2>
+
+<input type="hidden" id="RequestVerificationToken" name="__RequestVerificationToken" value="@tokens.RequestToken" />
+
+@foreach (var user in Model)
+{
+    <div class="user-card">
+        <img src="@user.ProfileImageUrl" alt="Avatar" width="50" height="50" />
+        <strong>@user.UserName</strong> - @user.Email
+
+        <div class="dropdown">
+            <button class="menu-button">⋮</button>
+            <div class="dropdown-content">
+                @if (user.IsLocked)
+                {
+                    <button onclick="unlockUser('@user.UserId')">Unlock</button>
+                }
+                else
+                {
+                    <button onclick="lockUser('@user.UserId')">Lock</button>
+                }
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+    function lockUser(userId) {
+        const token = document.getElementById("RequestVerificationToken").value;
+
+        fetch('/Profiles/LockUser', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'RequestVerificationToken': token
+            },
+            body: JSON.stringify({ userId: userId })
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    alert("User locked successfully");
+                    location.reload();
+                } else {
+                    alert("Failed to lock user");
+                }
+            });
+    }
+
+    function unlockUser(userId) {
+        const token = document.getElementById("RequestVerificationToken").value;
+
+        fetch('/Profiles/UnlockUser', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'RequestVerificationToken': token
+            },
+            body: JSON.stringify({ userId: userId })
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    alert("User unlocked successfully");
+                    location.reload();
+                } else {
+                    alert("Failed to unlock user");
+                }
+            });
+    }
+</script>

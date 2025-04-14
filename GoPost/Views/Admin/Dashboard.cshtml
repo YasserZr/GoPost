@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="alert alert-info">
+    Welcome, Admin! 🎉<br />
+    From here, you can manage users, posts, and platform settings.
+</div>
+
+<ul>
+    <li><a asp-controller="Profiles" asp-action="Users">Manage Users</a></li>
+    <li><a asp-controller="Posts" asp-action="Index">Manage Posts</a></li>
+    <!-- Add more admin links as needed -->
+</ul>

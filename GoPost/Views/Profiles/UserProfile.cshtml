@@ -47,10 +47,17 @@
                                                 <li><a class="dropdown-item" href="/Posts/Edit/@post.Id">Edit</a></li>
                                                 <li><button class="dropdown-item delete-post-btn" data-post-id="@post.Id">Delete</button></li>
                                             </ul>
-                                </div>
+                                        </div>
                             } else
                             {
-                                <li><a class="dropdown-item" href="/Posts/Details/@post.Id">View</a></li>
+                                <div class="dropdown">
+                                    <button class="btn btn-sm" type="button" id="postMenuButton-@post.Id" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-three-dots"></i>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="postMenuButton-@post.Id">
+                                        <li><a class="dropdown-item" href="/Posts/Details/@post.Id">View</a></li>
+                                    </ul>
+                                </div>
                             }
                         </div>
                             <div class="mt-3 d-flex align-items-center">

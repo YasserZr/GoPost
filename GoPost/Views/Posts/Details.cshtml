@@ -10,7 +10,11 @@
     <div class="card shadow-sm">
         <div class="card-body">
             <h3 class="card-title">@Model.Title</h3>
-            <h6 class="text-muted">Posted by: @Model.User?.UserName</h6>
+            <h6 class="text-muted">Posted by: 
+                <a href="@Url.Action("Profile", "Profiles", new { userId = @Model.User?.Id })">
+                    @Model.User?.UserName
+                </a>
+            </h6>
             <p class="card-text mt-2">@Model.Content</p>
 
             @* Display image if uploaded *@
@@ -53,7 +57,11 @@
                 @foreach (var comment in Model.Comments)
                 {
                     <li class="list-group-item">
-                        <strong>@comment.User?.UserName</strong>: @comment.Content
+                        <img src="@comment.User?.ProfileImageUrl ?? " /images/default-profile.png"" alt="Profile"
+                             class="rounded-circle me-3" width="80" height="80" />
+                        <a href="@Url.Action("Profile", "Profiles", new { userId = @comment.User?.Id })">
+                            @comment.User?.UserName
+                        </a>: @comment.Content
                         <br />
                         <small class="text-muted">@comment.CreatedAt.ToLocalTime()</small>
                     </li>

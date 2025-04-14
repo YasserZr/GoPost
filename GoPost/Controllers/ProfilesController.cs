@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using GoPost.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GoPost.Controllers
 {
@@ -17,23 +18,73 @@ namespace GoPost.Controllers
             _context = context;
             _userManager = userManager;
         }
-
-        // Fetch user by id and include related posts
-        public async Task<IActionResult> Index(string id)
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Index()
         {
-            var user = await _context.Users
-                .OfType<ApplicationUser>() // Ensure the query is against ApplicationUser
-                .Include(u => u.Posts) // Including related posts
-                .FirstOrDefaultAsync(u => u.Id == id);
+            var users = await _context.Users
+                .OfType<ApplicationUser>()
+                .Include(u => u.Posts)
+                .ToListAsync();
 
-            if (user == null)
+            var viewModels = users.Select(user => new UserProfileViewModel
             {
-                return NotFound();
-            }
+                UserId = user.Id,
+                UserName = user.UserName,
+                Email = user.Email,
+                ProfileImageUrl = user.ProfileImageUrl ?? "/images/default-profile.png",
+                Posts = user.Posts?.ToList() ?? new List<Post>(),
+                FollowersCount = user.Followers?.Count ?? 0,
+                FollowingCount = user.Following?.Count ?? 0,
+                IsLocked = user.LockoutEnd != null && user.LockoutEnd > DateTimeOffset.UtcNow
+            }).ToList();
 
-            // You can pass the user and posts to the view
-            return View(user);
+            return View(viewModels); // Index.cshtml
         }
+        [Authorize(Roles = "Admin")]
+        public IActionResult Users()
+        {
+            var users = _context.Users
+                .OfType<ApplicationUser>()
+                .Select(u => new UserProfileViewModel
+                {
+                    UserId = u.Id,
+                    UserName = u.UserName,
+                    Email = u.Email,
+                    ProfileImageUrl = u.ProfileImageUrl,
+                    IsLocked = u.LockoutEnd != null && u.LockoutEnd > DateTime.Now
+                }).ToList();
+
+            return View(users);
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public JsonResult LockUser([FromBody] LockUnlockRequest model)
+        {
+            var user = _context.Users.FirstOrDefault(u => u.Id == model.UserId);
+            if (user == null)
+                return Json(new { success = false });
+
+            user.LockoutEnd = DateTime.Now.AddYears(100); // Effectively locked
+            _context.SaveChanges();
+            return Json(new { success = true });
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public JsonResult UnlockUser([FromBody] LockUnlockRequest model)
+        {
+            var user = _context.Users.FirstOrDefault(u => u.Id == model.UserId);
+            if (user == null)
+                return Json(new { success = false });
+
+            user.LockoutEnd = DateTime.Now; // Unlock
+            _context.SaveChanges();
+            return Json(new { success = true });
+        }
+
         public async Task<IActionResult> Profile(string userId)
         {
             if (string.IsNullOrEmpty(userId))
