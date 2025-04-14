@@ -1,0 +1,22 @@
+﻿@model List<GoPost.Models.ViewModels.UserProfileViewModel>
+
+<h2>Search Results</h2>
+
+@if (!Model.Any())
+{
+    <p>No users found.</p>
+}
+else
+{
+    <ul>
+        @foreach (var user in Model)
+        {
+            <li>
+                <img src="@user.ProfileImageUrl" alt="Profile" width="50" height="50" />
+                <a href="@Url.Action("Profile", "Profiles", new { userId = user.UserId })">
+                    @user.UserName (@user.Email)
+                </a>
+            </li>
+        }
+    </ul>
+}

@@ -25,6 +25,10 @@
                     <ul class="navbar-nav flex-grow-1">
                         @if (User.Identity.IsAuthenticated)
                         {
+                            <form asp-controller="Profiles" asp-action="Search" method="get">
+                                <input type="text" name="query" placeholder="Search users..." required />
+                                <button type="submit">Search</button>
+                            </form>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                             </li>

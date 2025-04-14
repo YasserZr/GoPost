@@ -43,12 +43,16 @@
                                                 <i class="bi bi-three-dots"></i>
                                             </button>
                                             <ul class="dropdown-menu" aria-labelledby="postMenuButton-@post.Id">
+                                                <li><a class="dropdown-item" href="/Posts/Details/@post.Id">View</a></li>
                                                 <li><a class="dropdown-item" href="/Posts/Edit/@post.Id">Edit</a></li>
                                                 <li><button class="dropdown-item delete-post-btn" data-post-id="@post.Id">Delete</button></li>
                                             </ul>
-                                        </div>
+                                </div>
+                            } else
+                            {
+                                <li><a class="dropdown-item" href="/Posts/Details/@post.Id">View</a></li>
                             }
-                            </div>
+                        </div>
                             <div class="mt-3 d-flex align-items-center">
                                 <span class="me-2">
                                     <i class="bi bi-chat-dots"></i> <span class="comment-count" data-post-id="@post.Id">0</span> Comments
@@ -165,7 +169,7 @@
 
                 $(document).on('click', '.post-item', function() {
                     var postId = $(this).data('post-id');
-                    window.location.href = '/Posts/Details/' + postId; // Removed direct navigation
+                    //window.location.href = '/Posts/Details/' + postId; // Removed direct navigation
                 });
 
                 // Get initial follower and following counts on page load.

@@ -95,5 +95,34 @@ namespace GoPost.Controllers
             return RedirectToAction("Profile", new { userId = user.Id });
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Search(string query)
+        {
+            if (string.IsNullOrWhiteSpace(query))
+            {
+                return View(new List<UserProfileViewModel>());
+            }
+
+            var users = await _context.Users
+                .OfType<ApplicationUser>()
+                .Where(u => u.UserName.Contains(query) || u.Email.Contains(query))
+                .Include(u => u.Posts)
+                .ToListAsync();
+
+            var results = users.Select(user => new UserProfileViewModel
+            {
+                UserId = user.Id,
+                UserName = user.UserName,
+                Email = user.Email,
+                ProfileImageUrl = user.ProfileImageUrl ?? "/images/default-profile.png",
+                Posts = user.Posts?.ToList() ?? new List<Post>(),
+                FollowersCount = user.Followers?.Count ?? 0,
+                FollowingCount = user.Following?.Count ?? 0,
+                IsFollowed = false // Optional, or calculate if needed
+            }).ToList();
+
+            return View("SearchResults", results); // You’ll need a view called SearchResults.cshtml
+        }
+
     }
 }
