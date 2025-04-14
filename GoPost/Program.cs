@@ -11,7 +11,8 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 
 // Configure DbContext with SQL Server
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connectionString));
+    options.UseSqlServer(connectionString), // Only connection string here
+ServiceLifetime.Scoped); // ServiceLifetime is a separate argument to AddDbContext
 
 // Add Identity (replace IdentityUser with your custom user class if you have one, in this case ApplicationUser)
 // Add Role Manager as well

@@ -15,5 +15,8 @@
 
         // NEW: For Admin Panel (Lock/Unlock)
         public bool IsLocked { get; set; }
+        
+        // NEW: User Roles
+        public List<string> Roles { get; set; }
     }
 }

@@ -12,11 +12,13 @@ namespace GoPost.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public ProfilesController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+        public ProfilesController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             _context = context;
             _userManager = userManager;
+            _roleManager = roleManager;
         }
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
@@ -41,20 +43,79 @@ namespace GoPost.Controllers
             return View(viewModels); // Index.cshtml
         }
         [Authorize(Roles = "Admin")]
-        public IActionResult Users()
+        public async Task<IActionResult> Users(string searchString, string roleFilter, bool? isLockedFilter)
         {
-            var users = _context.Users
-                .OfType<ApplicationUser>()
+            var users = _context.Users.OfType<ApplicationUser>().AsQueryable();
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                users = users.Where(u => u.UserName.Contains(searchString) || u.Email.Contains(searchString));
+            }
+
+            if (!string.IsNullOrEmpty(roleFilter) && (roleFilter == "user" || roleFilter == "admin"))
+            {
+                var usersInRole = await _userManager.GetUsersInRoleAsync(roleFilter);
+                users = users.Where(u => usersInRole.Contains(u));
+            }
+
+            if (isLockedFilter.HasValue)
+            {
+                if (isLockedFilter.Value)
+                {
+                    users = users.Where(u => u.LockoutEnd != null && u.LockoutEnd > DateTimeOffset.UtcNow);
+                }
+                else
+                {
+                    users = users.Where(u => u.LockoutEnd == null || u.LockoutEnd <= DateTimeOffset.UtcNow);
+                }
+            }
+
+            var viewModels = await users
                 .Select(u => new UserProfileViewModel
                 {
                     UserId = u.Id,
                     UserName = u.UserName,
                     Email = u.Email,
                     ProfileImageUrl = u.ProfileImageUrl,
-                    IsLocked = u.LockoutEnd != null && u.LockoutEnd > DateTime.Now
-                }).ToList();
+                    IsLocked = u.LockoutEnd != null && u.LockoutEnd > DateTime.Now,
+                    Roles = _userManager.GetRolesAsync(u).Result.ToList()
+                }).ToListAsync();
 
-            return View(users);
+            ViewBag.SearchString = searchString;
+            ViewBag.RoleFilter = roleFilter;
+            ViewBag.IsLockedFilter = isLockedFilter;
+
+            return View(viewModels);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        [ValidateAntiForgeryToken]
+        public async Task<JsonResult> ChangeRole([FromBody] ChangeRoleRequest model)
+        {
+            var user = await _userManager.FindByIdAsync(model.UserId);
+            if (user == null)
+            {
+                return Json(new { success = false, error = "User not found." });
+            }
+
+            if (model.Role != "user" && model.Role != "admin")
+            {
+                return Json(new { success = false, error = "Invalid role." });
+            }
+
+            var currentRoles = await _userManager.GetRolesAsync(user);
+            await _userManager.RemoveFromRolesAsync(user, currentRoles);
+            var result = await _userManager.AddToRoleAsync(user, model.Role);
+
+            if (result.Succeeded)
+            {
+                return Json(new { success = true, userId = user.Id, newRole = model.Role });
+            }
+            else
+            {
+                return Json(new { success = false, error = "Failed to update user role." });
+            }
         }
 
         [Authorize(Roles = "Admin")]

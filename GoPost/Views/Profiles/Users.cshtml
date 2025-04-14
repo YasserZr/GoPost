@@ -41,9 +41,33 @@
         .user-card img {
             border-radius: 50%;
         }
+
+    .filter-container {
+        margin-bottom: 20px;
+        display: flex;
+        gap: 15px;
+        align-items: center;
+    }
 </style>
 
 <h2>Users</h2>
+
+<div class="filter-container">
+    <form method="get" asp-action="Users">
+        <input type="text" name="searchString" placeholder="Search by Username or Email" value="@ViewBag.SearchString" />
+        <select name="roleFilter">
+            <option value="">All Roles</option>
+            <option value="admin" selected="@(ViewBag.RoleFilter == "admin")">Admin</option>
+            <option value="user" selected="@(ViewBag.RoleFilter == "user")">User</option>
+        </select>
+        <select name="isLockedFilter">
+            <option value="">All Status</option>
+            <option value="true" selected="@(ViewBag.IsLockedFilter == true)">Locked</option>
+            <option value="false" selected="@(ViewBag.IsLockedFilter == false)">Unlocked</option>
+        </select>
+        <button type="submit">Filter</button>
+    </form>
+</div>
 
 <input type="hidden" id="RequestVerificationToken" name="__RequestVerificationToken" value="@tokens.RequestToken" />
 
@@ -52,6 +76,10 @@
     <div class="user-card">
         <img src="@user.ProfileImageUrl" alt="Avatar" width="50" height="50" />
         <strong>@user.UserName</strong> - @user.Email
+        @if (user.Roles != null && user.Roles.Any())
+        {
+            <span>(Roles: @string.Join(", ", user.Roles))</span>
+        }
 
         <div class="dropdown">
             <button class="menu-button">⋮</button>
@@ -64,6 +92,14 @@
                 {
                     <button onclick="lockUser('@user.UserId')">Lock</button>
                 }
+                <div class="role-dropdown">
+                    <label for="role-@user.UserId">Change Role:</label>
+                    <select id="role-@user.UserId" onchange="changeRole('@user.UserId', this.value)">
+                        <option value="">Select Role</option>
+                        <option value="admin" selected="@(user.Roles?.Contains("admin") == true)">Admin</option>
+                        <option value="user" selected="@(user.Roles?.Contains("user") == true)">User</option>
+                    </select>
+                </div>
             </div>
         </div>
     </div>
@@ -85,7 +121,12 @@
             .then(data => {
                 if (data.success) {
                     alert("User locked successfully");
-                    location.reload();
+                    // Optionally update the UI without a full reload
+                    const lockButton = document.querySelector(`.user-card:has(strong:contains('${data.userName}')) .dropdown-content button:contains('Lock')`);
+                    if (lockButton) {
+                        lockButton.textContent = 'Unlock';
+                        lockButton.onclick = () => unlockUser(data.userId);
+                    }
                 } else {
                     alert("Failed to lock user");
                 }
@@ -107,9 +148,40 @@
             .then(data => {
                 if (data.success) {
                     alert("User unlocked successfully");
-                    location.reload();
+                    // Optionally update the UI without a full reload
+                    const unlockButton = document.querySelector(`.user-card:has(strong:contains('${data.userName}')) .dropdown-content button:contains('Unlock')`);
+                    if (unlockButton) {
+                        unlockButton.textContent = 'Lock';
+                        unlockButton.onclick = () => lockUser(data.userId);
+                    }
                 } else {
                     alert("Failed to unlock user");
+                }
+            });
+    }
+
+    function changeRole(userId, newRole) {
+        const token = document.getElementById("RequestVerificationToken").value;
+
+        fetch('/Profiles/ChangeRole', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'RequestVerificationToken': token
+            },
+            body: JSON.stringify({ userId: userId, role: newRole })
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    alert(`User role updated to ${data.newRole}`);
+                    location.reload(); // Simple way to update the displayed role
+                } else {
+                    alert(`Failed to update user role: ${data.error}`);
+                    // Optionally revert the select dropdown
+                    const selectElement = document.getElementById(`role-${userId}`);
+                    const previousRole = data.previousRole || ''; // You might need to pass the previous role back
+                    selectElement.value = previousRole;
                 }
             });
     }
