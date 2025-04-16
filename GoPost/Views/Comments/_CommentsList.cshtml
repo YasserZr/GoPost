@@ -10,7 +10,7 @@
                 <input type="hidden" name="PostId" value="@ViewBag.PostId" />
                 
                 <div class="input-group">
-                    <img src="@ViewBag.CurrentUserImage" class="rounded-circle comment-avatar" alt="Your avatar">
+                    <img src="@(ViewBag.CurrentUserImage ?? "/images/default-profile.png")" class="rounded-circle comment-avatar" alt="Your avatar">
                     <textarea name="Content" class="form-control" placeholder="Write a comment..." required></textarea>
                 </div>
                 
@@ -24,15 +24,15 @@
     }
     
     <div class="comments-list">
-        @foreach (var comment in Model)
+        @foreach (var comment in Model.OrderByDescending(c => c.CreatedAt))
         {
             <div class="comment-card" id="comment-@comment.Id">
                 <div class="comment-header">
-                    <a href="/Profiles/Profile?userId=@comment.UserId" class="comment-user">
+                    <a href="/Profiles/Profile?userId=@comment.User.Id" class="comment-user">
                         <img src="@(comment.User?.ProfileImageUrl ?? "/images/default-profile.png")" class="rounded-circle comment-avatar" alt="@comment.User?.UserName">
                         <span class="comment-username">@comment.User?.UserName</span>
                     </a>
-                    <small class="comment-time">@comment.CreatedAt</small>
+                    <small class="comment-time">@comment.CreatedAt.ToLocalTime().ToString("MMM dd, yyyy HH:mm")</small>
                 </div>
                 
                 <div class="comment-body">
@@ -44,7 +44,7 @@
                         <i class="bi bi-heart"></i> Like
                     </button>
                     
-                    @if (User.Identity.IsAuthenticated && comment.UserId == ViewBag.CurrentUserId)
+                    @if (User.Identity.IsAuthenticated && comment.User.Id == User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value)
                     {
                         <div class="dropdown comment-actions-dropdown">
                             <button class="btn btn-sm btn-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -72,7 +72,7 @@
         {
             <div class="empty-comments">
                 <div class="text-center my-4">
-                    <img src="/images/empty-comments.svg" alt="No comments" class="empty-comments-img">
+                    <i class="bi bi-chat-square-text text-muted empty-icon"></i>
                     <h5>No comments yet</h5>
                     <p class="text-muted">Be the first to share your thoughts!</p>
                 </div>

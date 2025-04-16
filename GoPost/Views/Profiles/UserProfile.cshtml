@@ -1,204 +1,305 @@
 ﻿@model GoPost.Models.ViewModels.UserProfileViewModel
 
-<div class="container mt-4">
-    <div class="card p-4 shadow-sm">
-        <div class="d-flex align-items-center">
-            <img src="@Model.ProfileImageUrl ?? "/images/default-profile.png"" alt="Profile"
-                 class="rounded-circle me-3" width="80" height="80" />
-            <div>
-                <h3>@Model.UserName</h3>
-                <p>@Model.Email</p>
+<div class="container mt-5">
+    <!-- Profile Header Card -->
+    <div class="card border-0 shadow-sm rounded-3 overflow-hidden mb-4">
+        <div class="card-header bg-gradient bg-primary text-white p-3">
+            <h4 class="mb-0">Profile</h4>
+        </div>
+        <div class="card-body p-4">
+            <div class="row align-items-center">
+                <div class="col-md-2 text-center text-md-start mb-3 mb-md-0">
+                    <img src="@Model.ProfileImageUrl ?? "/images/default-profile.png"" alt="Profile"
+                        class="rounded-circle border border-3 border-light shadow" width="100" height="100" />
+                </div>
+                <div class="col-md-7">
+                    <h2 class="fw-bold mb-1">@Model.UserName</h2>
+                    <p class="text-muted mb-3">
+                        <i class="bi bi-envelope me-2"></i>@Model.Email
+                    </p>
+                    <div class="d-flex gap-4">
+                        <a href="#" id="followersCount" class="text-decoration-none text-body d-flex align-items-center">
+                            <span class="badge bg-primary rounded-pill me-2">@Model.FollowersCount</span>
+                            <span>Followers</span>
+                        </a>
+                        <a href="#" id="followingCount" class="text-decoration-none text-body d-flex align-items-center">
+                            <span class="badge bg-primary rounded-pill me-2">@Model.FollowingCount</span>
+                            <span>Following</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3 text-md-end mt-3 mt-md-0">
+                    @if (ViewData["IsOwnProfile"] == null || (bool)ViewData["IsOwnProfile"] == false)
+                    {
+                        <button id="followBtn" class="btn btn-outline-primary rounded-pill px-4"
+                                data-user-id="@Model.UserId">
+                            <i class="bi @(Model.IsFollowed ? "bi-person-dash" : "bi-person-plus") me-1"></i>
+                            @(Model.IsFollowed ? "Unfollow" : "Follow")
+                        </button>
+                    }
+                </div>
             </div>
         </div>
-
-        <div class="mt-3 d-flex gap-3">
-            <span id="followersCount"><strong>@Model.FollowersCount</strong> Followers</span>
-            <span id="followingCount"><strong>@Model.FollowingCount</strong> Following</span>
+    </div>
+    
+    <!-- Posts Section -->
+    <div class="card border-0 shadow-sm rounded-3 overflow-hidden mb-4">
+        <div class="card-header bg-white p-3 border-bottom">
+            <div class="d-flex justify-content-between align-items-center">
+                <h5 class="mb-0"><i class="bi bi-file-post me-2"></i>Posts</h5>
+                <span class="badge bg-secondary">@Model.Posts.Count()</span>
+            </div>
         </div>
-
-        @if (ViewData["IsOwnProfile"] == null || (bool)ViewData["IsOwnProfile"] == false)
-        {
-                <button id="followBtn" class="btn btn-primary mt-3"
-                        data-user-id="@Model.UserId">
-                @(Model.IsFollowed ? "Unfollow" : "Follow")
-                </button>
-        }
-
-        <div class="mt-3">
-            <h4>Posts</h4>
-            <ul class="list-group">
-                @foreach (var post in Model.Posts)
-                {
-                        <li class="list-group-item mb-3 p-4 border rounded-lg shadow-md post-item" data-post-id="@post.Id" style="cursor: pointer;">
-                            <div class="d-flex justify-content-between align-items-start">
-                                <div>
-                                    <strong class="text-primary">@Model.UserName</strong>
-                                    <small class="text-muted"> - @post.CreatedAt.ToString("g")</small>
-                                    <p class="mt-2">@post.Content</p>
-                                </div>
-                            @if (ViewData["IsOwnProfile"] != null && (bool)ViewData["IsOwnProfile"] == true)
-                            {
+        <div class="card-body p-0">
+            @if (Model.Posts.Any())
+            {
+                <ul class="list-group list-group-flush">
+                    @foreach (var post in Model.Posts)
+                    {
+                        <li class="list-group-item p-0 position-relative post-item" data-post-id="@post.Id">
+                            <div class="p-4">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <div class="d-flex align-items-center">
+                                        <img src="@Model.ProfileImageUrl ?? "/images/default-profile.png"" 
+                                            class="rounded-circle me-2" width="40" height="40" alt="Profile" />
+                                        <div>
+                                            <h6 class="mb-0 fw-bold">@Model.UserName</h6>
+                                            <small class="text-muted">
+                                                <i class="bi bi-clock me-1"></i>@post.CreatedAt.ToString("MMM d, yyyy h:mm tt")
+                                            </small>
+                                        </div>
+                                    </div>
+                                    
+                                    @if (ViewData["IsOwnProfile"] != null && (bool)ViewData["IsOwnProfile"] == true)
+                                    {
                                         <div class="dropdown">
-                                            <button class="btn btn-sm" type="button" id="postMenuButton-@post.Id" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <button class="btn btn-sm btn-light rounded-circle" type="button" 
+                                                    id="postMenuButton-@post.Id" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <i class="bi bi-three-dots"></i>
                                             </button>
-                                            <ul class="dropdown-menu" aria-labelledby="postMenuButton-@post.Id">
-                                                <li><a class="dropdown-item" href="/Posts/Details/@post.Id">View</a></li>
-                                                <li><a class="dropdown-item" href="/Posts/Edit/@post.Id">Edit</a></li>
-                                                <li><button class="dropdown-item delete-post-btn" data-post-id="@post.Id">Delete</button></li>
+                                            <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0" 
+                                                aria-labelledby="postMenuButton-@post.Id">
+                                                <li><a class="dropdown-item" href="/Posts/Details/@post.Id">
+                                                    <i class="bi bi-eye me-2"></i>View
+                                                </a></li>
+                                                <li><a class="dropdown-item" href="/Posts/Edit/@post.Id">
+                                                    <i class="bi bi-pencil me-2"></i>Edit
+                                                </a></li>
+                                                <li><hr class="dropdown-divider"></li>
+                                                <li><button class="dropdown-item text-danger delete-post-btn" data-post-id="@post.Id">
+                                                    <i class="bi bi-trash me-2"></i>Delete
+                                                </button></li>
                                             </ul>
                                         </div>
-                            } else
-                            {
-                                <div class="dropdown">
-                                    <button class="btn btn-sm" type="button" id="postMenuButton-@post.Id" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="bi bi-three-dots"></i>
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="postMenuButton-@post.Id">
-                                        <li><a class="dropdown-item" href="/Posts/Details/@post.Id">View</a></li>
-                                    </ul>
+                                    } 
+                                    else
+                                    {
+                                        <div class="dropdown">
+                                            <button class="btn btn-sm btn-light rounded-circle" type="button" 
+                                                    id="postMenuButton-@post.Id" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="bi bi-three-dots"></i>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0" 
+                                                aria-labelledby="postMenuButton-@post.Id">
+                                                <li><a class="dropdown-item" href="/Posts/Details/@post.Id">
+                                                    <i class="bi bi-eye me-2"></i>View
+                                                </a></li>
+                                            </ul>
+                                        </div>
+                                    }
                                 </div>
-                            }
-                        </div>
-                            <div class="mt-3 d-flex align-items-center">
-                                <span class="me-2">
-                                    <i class="bi bi-chat-dots"></i> <span class="comment-count" data-post-id="@post.Id">0</span> Comments
-                                </span>
-                                <span>
-                                    <i class="bi bi-heart"></i> <span class="like-count" data-post-id="@post.Id">0</span> Likes
-                                </span>
+                                
+                                <div class="post-content mt-3 mb-3">
+                                    <p class="mb-0">@post.Content</p>
+                                </div>
+                                
+                                <div class="d-flex align-items-center mt-3 pt-3 border-top">
+                                    <button class="btn btn-sm btn-outline-secondary rounded-pill d-flex align-items-center me-3 comment-btn" 
+                                            data-post-id="@post.Id">
+                                        <i class="bi bi-chat-dots me-2"></i>
+                                        <span class="comment-count" data-post-id="@post.Id">0</span>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger rounded-pill d-flex align-items-center like-btn" 
+                                            data-post-id="@post.Id">
+                                        <i class="bi bi-heart me-2"></i>
+                                        <span class="like-count" data-post-id="@post.Id">0</span>
+                                    </button>
+                                </div>
                             </div>
-                            <div class="comments-section mt-3" id="comments-@post.Id" style="display: none;">
+                            
+                            <div class="comments-section bg-light p-3 border-top" id="comments-@post.Id" style="display: none;">
+                                <div class="comments-placeholder text-center py-3">
+                                    <div class="spinner-border spinner-border-sm text-primary" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    <p class="mb-0 mt-2">Loading comments...</p>
+                                </div>
                             </div>
                         </li>
-                }
-            </ul>
-            @if (!Model.Posts.Any())
+                    }
+                </ul>
+            }
+            else
             {
-                    <p class="text-muted mt-2">No posts yet.</p>
+                <div class="text-center p-5">
+                    <i class="bi bi-file-earmark-x text-muted mb-3" style="font-size: 3rem;"></i>
+                    <h5 class="text-muted">No posts yet</h5>
+                    <p class="text-muted mb-0">When there are posts, they'll show up here.</p>
+                </div>
             }
         </div>
     </div>
 </div>
 
 @section Scripts {
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-        <script>
-            $(document).ready(function () {
-                const currentUserId = "@User.Identity.Name";
-                $('#followBtn').click(function () {
-                    const btn = $(this);
-                    const userId = btn.data('user-id');
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        .post-item {
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .post-item:hover {
+            background-color: rgba(0,0,0,0.01);
+        }
+        .badge {
+            transition: all 0.2s ease;
+        }
+        #followersCount:hover .badge, #followingCount:hover .badge {
+            transform: scale(1.1);
+        }
+        .btn-outline-primary:hover, .btn-outline-danger:hover, .btn-outline-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .post-content {
+            line-height: 1.6;
+        }
+        .comment-btn:focus, .like-btn:focus {
+            box-shadow: none;
+        }
+        .dropdown-menu {
+            border-radius: 0.5rem;
+        }
+        .bg-gradient {
+            background: linear-gradient(135deg, #4e73df 0%, #224abe 100%);
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            const currentUserId = "@User.Identity.Name";
+            $('#followBtn').click(function () {
+                const btn = $(this);
+                const userId = btn.data('user-id');
 
-                    $.post('/Follows/ToggleFollow', { userIdToFollow: userId }, function (res) {
-                        btn.text(res.isFollowed ? "Unfollow" : "Follow");
-                        $('#followersCount').text(res.followersCount + " Followers");
-                        $.get(`/Follows/GetFollowingCount?userId=${currentUserId}`, function(followingCount) {
-                            $('#followingCount').text(followingCount + " Following");
-                        });
+                $.post('/Follows/ToggleFollow', { userIdToFollow: userId }, function (res) {
+                    btn.text(res.isFollowed ? "Unfollow" : "Follow");
+                    $('#followersCount').text(res.followersCount + " Followers");
+                    $.get(`/Follows/GetFollowingCount?userId=${currentUserId}`, function(followingCount) {
+                        $('#followingCount').text(followingCount + " Following");
                     });
-                });
-
-                function initializeLikeCounts() {
-                    $('.like-count').each(function () {
-                        var postId = $(this).data('post-id');
-                        var likeCountSpan = $(this);
-                        $.ajax({
-                            url: `/Reactions/GetLikeCount?postId=${postId}`,
-                            type: "GET",
-                            success: function (data) {
-                                likeCountSpan.text(data.likeCount);
-                            },
-                            error: function () {
-                                console.error("Error fetching like count for post: " + postId);
-                            }
-                        });
-                    });
-                }
-
-                function initializeCommentCounts() {
-                    $('.comment-count').each(function () {
-                        var postId = $(this).data('post-id');
-                        var commentCountSpan = $(this);
-                        $.ajax({
-                            url: `/Comments/GetCommentCount?postId=${postId}`,
-                            type: "GET",
-                            success: function (data) {
-                                commentCountSpan.text(data.commentCount);
-                            },
-                            error: function () {
-                                console.error("Error fetching comment count for post: " + postId);
-                            }
-                        });
-                    });
-                }
-
-                function loadComments(postId) {
-                    var commentsSection = $('#comments-' + postId);
-                    $.ajax({
-                        url: `/Comments/GetComments?postId=${postId}`,
-                        type: "GET",
-                        success: function (comments) {
-                            commentsSection.empty();
-                            if (comments && comments.length > 0) {
-                                $.each(comments, function (index, comment) {
-                                    var commentHtml = `
-                                        <div class="comment p-2 mb-2 border-bottom">
-                                            <strong>${comment.userName}</strong>: ${comment.content}
-                                            <small class="text-muted"> - ${new Date(comment.createdAt).toLocaleTimeString()} ${new Date(comment.createdAt).toLocaleDateString()}</small>
-                                        </div>
-                                    `;
-                                    commentsSection.append(commentHtml);
-                                });
-                            } else {
-                                commentsSection.append('<p class="text-muted">No comments yet.</p>');
-                            }
-                        },
-                        error: function () {
-                            alert("Failed to load comments.");
-                        }
-                    });
-                }
-
-                $(document).on('click', '.comment-count', function (e) {
-                    e.stopPropagation();
-                    var postId = $(this).data('post-id');
-                    var commentsSection = $('#comments-' + postId);
-
-                    if (commentsSection.is(':visible')) {
-                        commentsSection.slideUp();
-                    } else {
-                        commentsSection.slideDown();
-                        loadComments(postId);
-                    }
-                });
-
-                $(document).on('click', '.post-item', function() {
-                    var postId = $(this).data('post-id');
-                    //window.location.href = '/Posts/Details/' + postId; // Removed direct navigation
-                });
-
-                // Get initial follower and following counts on page load.
-                const profileUserId = "@Model.UserId";
-
-                $.get(`/Follows/GetFollowerCount?userId=${profileUserId}`, function (followerCount) {
-                    $('#followersCount').text(followerCount + " Followers");
-                });
-
-                $.get(`/Follows/GetFollowingCount?userId=${profileUserId}`, function (followingCount) {
-                    $('#followingCount').text(followingCount + " Following");
-                });
-
-
-                initializeLikeCounts();
-                initializeCommentCounts();
-
-                $(document).on('click', '.delete-post-btn', function (e) {
-                    e.preventDefault();
-                    var postId = $(this).data('post-id');
-                    window.location.href = '/Posts/Delete/' + postId;
                 });
             });
-        </script>
+
+            function initializeLikeCounts() {
+                $('.like-count').each(function () {
+                    var postId = $(this).data('post-id');
+                    var likeCountSpan = $(this);
+                    $.ajax({
+                        url: `/Reactions/GetLikeCount?postId=${postId}`,
+                        type: "GET",
+                        success: function (data) {
+                            likeCountSpan.text(data.likeCount);
+                        },
+                        error: function () {
+                            console.error("Error fetching like count for post: " + postId);
+                        }
+                    });
+                });
+            }
+
+            function initializeCommentCounts() {
+                $('.comment-count').each(function () {
+                    var postId = $(this).data('post-id');
+                    var commentCountSpan = $(this);
+                    $.ajax({
+                        url: `/Comments/GetCommentCount?postId=${postId}`,
+                        type: "GET",
+                        success: function (data) {
+                            commentCountSpan.text(data.commentCount);
+                        },
+                        error: function () {
+                            console.error("Error fetching comment count for post: " + postId);
+                        }
+                    });
+                });
+            }
+
+            function loadComments(postId) {
+                var commentsSection = $('#comments-' + postId);
+                $.ajax({
+                    url: `/Comments/GetComments?postId=${postId}`,
+                    type: "GET",
+                    success: function (comments) {
+                        commentsSection.empty();
+                        if (comments && comments.length > 0) {
+                            $.each(comments, function (index, comment) {
+                                var commentHtml = `
+                                    <div class="comment p-2 mb-2 border-bottom">
+                                        <strong>${comment.userName}</strong>: ${comment.content}
+                                        <small class="text-muted"> - ${new Date(comment.createdAt).toLocaleTimeString()} ${new Date(comment.createdAt).toLocaleDateString()}</small>
+                                    </div>
+                                `;
+                                commentsSection.append(commentHtml);
+                            });
+                        } else {
+                            commentsSection.append('<p class="text-muted">No comments yet.</p>');
+                        }
+                    },
+                    error: function () {
+                        alert("Failed to load comments.");
+                    }
+                });
+            }
+
+            $(document).on('click', '.comment-count', function (e) {
+                e.stopPropagation();
+                var postId = $(this).data('post-id');
+                var commentsSection = $('#comments-' + postId);
+
+                if (commentsSection.is(':visible')) {
+                    commentsSection.slideUp();
+                } else {
+                    commentsSection.slideDown();
+                    loadComments(postId);
+                }
+            });
+
+            $(document).on('click', '.post-item', function() {
+                var postId = $(this).data('post-id');
+                //window.location.href = '/Posts/Details/' + postId; // Removed direct navigation
+            });
+
+            // Get initial follower and following counts on page load.
+            const profileUserId = "@Model.UserId";
+
+            $.get(`/Follows/GetFollowerCount?userId=${profileUserId}`, function (followerCount) {
+                $('#followersCount').text(followerCount + " Followers");
+            });
+
+            $.get(`/Follows/GetFollowingCount?userId=${profileUserId}`, function (followingCount) {
+                $('#followingCount').text(followingCount + " Following");
+            });
+
+
+            initializeLikeCounts();
+            initializeCommentCounts();
+
+            $(document).on('click', '.delete-post-btn', function (e) {
+                e.preventDefault();
+                var postId = $(this).data('post-id');
+                window.location.href = '/Posts/Delete/' + postId;
+            });
+        });
+    </script>
 }

@@ -1,102 +1,137 @@
 ﻿@model GoPost.Models.Post
-@using Microsoft.AspNetCore.Identity  // Add this using statement
-@inject UserManager<ApplicationUser> UserManager  // Inject UserManager
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> UserManager
 @{
     ViewData["Title"] = "Edit Post";
 }
 
-<h2 class="mb-4">@ViewData["Title"]</h2>
-
-<form asp-action="Edit" method="post" enctype="multipart/form-data">
-    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
-
-    <input type="hidden" asp-for="Id" />
-    <input type="hidden" asp-for="UserId" />
-    <input type="hidden" asp-for="ImagePath" />
-
-    <div class="form-group mb-3">
-        <label asp-for="Title" class="form-label"></label>
-        <input asp-for="Title" class="form-control" />
-        <span asp-validation-for="Title" class="text-danger"></span>
-    </div>
-
-    <div class="form-group mb-3">
-        <label asp-for="Content" class="form-label"></label>
-        <textarea asp-for="Content" class="form-control" rows="4"></textarea>
-        <span asp-validation-for="Content" class="text-danger"></span>
-    </div>
-
-    <div class="form-group mb-3">
-        <label class="form-label">Change Image (optional)</label>
-        <input type="file" name="ImageFile" class="form-control" />
-        @if (!string.IsNullOrEmpty(Model.ImagePath))
-        {
-                <div class="mt-2">
-                    <p>Current Image:</p>
-                    <img src="@Url.Content(Model.ImagePath)" alt="Current Image" class="img-thumbnail" style="max-height: 150px;" />
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card shadow-sm border-0 rounded-3">
+                <div class="card-header bg-light py-3">
+                    <h2 class="card-title mb-0 fw-bold">
+                        <i class="bi bi-pencil-square me-2"></i>@ViewData["Title"]
+                    </h2>
                 </div>
-        }
-    </div>
+                <div class="card-body p-4">
+                    <form asp-action="Edit" method="post" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger mb-4" role="alert"></div>
 
-    <div class="form-group mb-3">
-        <label class="form-label">Change Files (optional)</label>
-        <input type="file" name="newFiles" class="form-control" multiple />
+                        <input type="hidden" asp-for="Id" />
+                        <input type="hidden" asp-for="UserId" />
+                        <input type="hidden" asp-for="ImagePath" />
 
-        @if (Model.PostFiles != null && Model.PostFiles.Any())
-        {
-                <div class="mt-2">
-                    <h5>Current Files:</h5>
-                    <ul>
-                    @foreach (var file in Model.PostFiles)
-                    {
-                            <li id="file-@file.Id" class="file-item">
-                                <a href="@Url.Content(file.FilePath)" target="_blank">@file.FileName</a>
-                                <button type="button" class="btn btn-danger btn-sm remove-file-btn" data-file-id="@file.Id" style="margin-left: 10px;">
-                                    <i class="bi bi-x-circle"></i> Remove
-                                </button>
-                            </li>
-                    }
-                    </ul>
+                        <div class="form-group mb-4">
+                            <label asp-for="Title" class="form-label fw-medium">Post Title</label>
+                            <input asp-for="Title" class="form-control form-control-lg shadow-sm" placeholder="Enter post title" />
+                            <span asp-validation-for="Title" class="text-danger small"></span>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label asp-for="Content" class="form-label fw-medium">Post Content</label>
+                            <textarea asp-for="Content" class="form-control shadow-sm" rows="6" 
+                                      placeholder="Write your post content here..."></textarea>
+                            <span asp-validation-for="Content" class="text-danger small"></span>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <div class="form-group h-100">
+                                    <label class="form-label fw-medium">
+                                        <i class="bi bi-image me-2"></i>Change Image (optional)
+                                    </label>
+                                    <input type="file" name="ImageFile" class="form-control shadow-sm" accept="image/*" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                @if (!string.IsNullOrEmpty(Model.ImagePath))
+                                {
+                                    <div class="current-image p-3 text-center bg-light rounded">
+                                        <p class="mb-2 text-muted small">Current Image:</p>
+                                        <img src="@Url.Content(Model.ImagePath)" alt="Current Image" 
+                                             class="img-thumbnail mb-0 shadow-sm" style="max-height: 150px;" />
+                                    </div>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label class="form-label fw-medium">
+                                <i class="bi bi-file-earmark me-2"></i>Change Files (optional)
+                            </label>
+                            <input type="file" name="newFiles" class="form-control shadow-sm" multiple />
+
+                            @if (Model.PostFiles != null && Model.PostFiles.Any())
+                            {
+                                <div class="current-files mt-3 bg-light p-3 rounded">
+                                    <h6 class="fw-medium mb-3">Current Files:</h6>
+                                    <ul class="list-group">
+                                    @foreach (var file in Model.PostFiles)
+                                    {
+                                        <li id="file-@file.Id" class="list-group-item d-flex justify-content-between align-items-center file-item">
+                                            <a href="@Url.Content(file.FilePath)" target="_blank" class="text-decoration-none">
+                                                <i class="bi bi-file-earmark me-2"></i>@file.FileName
+                                            </a>
+                                            <button type="button" class="btn btn-sm btn-outline-danger remove-file-btn" 
+                                                    data-file-id="@file.Id">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </li>
+                                    }
+                                    </ul>
+                                </div>
+                            }
+                        </div>
+
+                        <div class="d-flex justify-content-between mt-4">
+                            <button type="submit" class="btn btn-primary px-4 py-2 shadow-sm">
+                                <i class="bi bi-save me-2"></i>Save Changes
+                            </button>
+                            @{
+                                string currentUserId = UserManager.GetUserId(User);
+                            }
+                            <a asp-controller="Profiles" asp-action="Profile" asp-route-userId="@currentUserId" 
+                               class="btn btn-outline-secondary px-4 py-2">
+                                <i class="bi bi-arrow-left me-2"></i>Back to Profile
+                            </a>
+                        </div>
+                    </form>
                 </div>
-        }
+            </div>
+        </div>
     </div>
-
-    <button type="submit" class="btn btn-primary">💾 Save Changes</button>
-    @{
-        string currentUserId = UserManager.GetUserId(User);
-    }
-    <a asp-controller="Profiles" asp-action="Profile" asp-route-userId="@currentUserId">Back to Profile</a>
-</form>
+</div>
 
 @section Scripts {
     @await Html.PartialAsync("_ValidationScriptsPartial");
 
-            <script>
-                // Attach click event for the remove file button
-                $(".remove-file-btn").click(function (e) {
-                    e.preventDefault();
-                    var fileId = $(this).data("file-id");
-                    var fileContainer = $("#file-" + fileId);
+    <script>
+        // Attach click event for the remove file button
+        $(".remove-file-btn").click(function (e) {
+            e.preventDefault();
+            var fileId = $(this).data("file-id");
+            var fileContainer = $("#file-" + fileId);
 
-                    // AJAX call to remove the file
-                    $.ajax({
-                        url: '@Url.Action("RemoveFile", "Posts")',  // Make sure this is the correct controller and action
-                        type: 'POST',
-                        data: {
-                            fileId: fileId
-                        },
-                        success: function (response) {
-                            if (response.success) {
-                                // On success, remove the file element from the DOM
-                                fileContainer.remove();
-                            } else {
-                                alert("Error removing the file.");
-                            }
-                        },
-                        error: function () {
-                            alert("An error occurred while removing the file.");
-                        }
-                    });
-                });
-            </script>
+            // AJAX call to remove the file
+            $.ajax({
+                url: '@Url.Action("RemoveFile", "Posts")',  // Make sure this is the correct controller and action
+                type: 'POST',
+                data: {
+                    fileId: fileId
+                },
+                success: function (response) {
+                    if (response.success) {
+                        // On success, remove the file element from the DOM
+                        fileContainer.remove();
+                    } else {
+                        alert("Error removing the file.");
+                    }
+                },
+                error: function () {
+                    alert("An error occurred while removing the file.");
+                }
+            });
+        });
+    </script>
 }

@@ -1,0 +1,221 @@
+/* Comments component styling */
+.comments-section {
+    margin-top: 2rem;
+}
+
+.comments-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--neutral-800);
+}
+
+.comment-form {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.comment-form .input-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+.comment-form textarea {
+    border-radius: var(--radius-md);
+    padding: 0.75rem;
+    min-height: 50px;
+    resize: vertical;
+    transition: min-height 0.3s ease;
+    box-shadow: none;
+    background-color: var(--neutral-100);
+    border: 1px solid var(--neutral-200);
+}
+
+.comment-form textarea:focus {
+    min-height: 80px;
+    background-color: white;
+    border-color: var(--primary-300);
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15);
+}
+
+.comment-actions {
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
+    margin-top: 0;
+    margin-left: calc(32px + 0.75rem); /* Aligns with the text input, accounting for avatar width and gap */
+}
+
+.comment-form textarea:focus + .comment-actions,
+.comment-form textarea:not(:placeholder-shown) + .comment-actions,
+.comment-form.expanded .comment-actions {
+    height: 40px;
+    opacity: 1;
+    margin-top: 0.5rem;
+}
+
+.comment-card {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: white;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--neutral-200);
+    transition: all 0.2s ease;
+}
+
+.comment-card:hover {
+    border-color: var(--neutral-300);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.comment-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.comment-user {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.comment-user:hover .comment-username {
+    color: var(--primary-600);
+}
+
+.comment-avatar {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    margin-right: 0.75rem;
+}
+
+.comment-username {
+    font-weight: 600;
+    font-size: 0.9375rem;
+    transition: color 0.2s ease;
+}
+
+.comment-time {
+    color: var(--neutral-500);
+    font-size: 0.75rem;
+}
+
+.comment-content {
+    margin-bottom: 0.75rem;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: var(--neutral-700);
+    white-space: pre-line;
+}
+
+.comment-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+}
+
+.reaction-btn {
+    padding: 0;
+    color: var(--neutral-600);
+    font-size: 0.875rem;
+    transition: color 0.2s ease;
+}
+
+.reaction-btn:hover {
+    color: var(--primary-600);
+}
+
+.reaction-btn.reacted {
+    color: var(--primary-600);
+}
+
+.comment-actions-dropdown .btn {
+    padding: 0;
+    color: var(--neutral-600);
+}
+
+.comment-actions-dropdown .btn:hover {
+    color: var(--neutral-800);
+}
+
+.empty-comments {
+    text-align: center;
+    padding: 2rem 1rem;
+    background-color: var(--neutral-50);
+    border-radius: var(--radius-md);
+    border: 1px dashed var(--neutral-300);
+}
+
+.empty-icon {
+    font-size: 2rem;
+    opacity: 0.6;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+/* Animation for comment entrance */
+@keyframes comment-entrance {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.comment-card {
+    animation: comment-entrance 0.3s ease forwards;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .comment-card {
+        background-color: var(--neutral-800);
+        border-color: var(--neutral-700);
+    }
+    
+    .comment-content {
+        color: var(--neutral-200);
+    }
+    
+    .comment-form textarea {
+        background-color: var(--neutral-700);
+        border-color: var(--neutral-600);
+        color: white;
+    }
+    
+    .comment-form textarea:focus {
+        background-color: var(--neutral-800);
+    }
+    
+    .empty-comments {
+        background-color: var(--neutral-800);
+        border-color: var(--neutral-700);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+    .comment-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .comment-time {
+        margin-left: calc(32px + 0.75rem);
+        margin-top: 0.25rem;
+    }
+    
+    .comment-card {
+        padding: 0.75rem;
+    }
+}

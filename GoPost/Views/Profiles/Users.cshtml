@@ -6,104 +6,144 @@
     var tokens = Antiforgery.GetAndStoreTokens(ViewContext.HttpContext);
 }
 
-<style>
-    .dropdown {
-        position: relative;
-        display: inline-block;
-    }
+<div class="container py-4">
+    <div class="card shadow-sm border-0 rounded-3 mb-4">
+        <div class="card-header bg-light py-3">
+            <h2 class="mb-0 fw-bold"><i class="bi bi-people me-2"></i>User Management</h2>
+        </div>
+        <div class="card-body">
+            <!-- Filter Controls -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <form method="get" asp-action="Users" class="row g-3 align-items-end">
+                        <div class="col-md-4">
+                            <label class="form-label fw-medium">Search</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-search"></i></span>
+                                <input type="text" name="searchString" class="form-control" placeholder="Username or Email" value="@ViewBag.SearchString" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label fw-medium">Role Filter</label>
+                            <select name="roleFilter" class="form-select">
+                                <option value="">All Roles</option>
+                                <option value="admin" selected="@(ViewBag.RoleFilter == "admin")">Admin</option>
+                                <option value="user" selected="@(ViewBag.RoleFilter == "user")">User</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label fw-medium">Status</label>
+                            <select name="isLockedFilter" class="form-select">
+                                <option value="">All Status</option>
+                                <option value="true" selected="@(ViewBag.IsLockedFilter == true)">Locked</option>
+                                <option value="false" selected="@(ViewBag.IsLockedFilter == false)">Unlocked</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="submit" class="btn btn-primary w-100">
+                                <i class="bi bi-funnel me-2"></i>Filter
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
 
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #fff;
-        border: 1px solid #ccc;
-        z-index: 1;
-    }
-
-    .dropdown:hover .dropdown-content {
-        display: block;
-    }
-
-    .menu-button {
-        background: none;
-        border: none;
-        font-size: 20px;
-        cursor: pointer;
-    }
-
-    .user-card {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 10px;
-    }
-
-        .user-card img {
-            border-radius: 50%;
-        }
-
-    .filter-container {
-        margin-bottom: 20px;
-        display: flex;
-        gap: 15px;
-        align-items: center;
-    }
-</style>
-
-<h2>Users</h2>
-
-<div class="filter-container">
-    <form method="get" asp-action="Users">
-        <input type="text" name="searchString" placeholder="Search by Username or Email" value="@ViewBag.SearchString" />
-        <select name="roleFilter">
-            <option value="">All Roles</option>
-            <option value="admin" selected="@(ViewBag.RoleFilter == "admin")">Admin</option>
-            <option value="user" selected="@(ViewBag.RoleFilter == "user")">User</option>
-        </select>
-        <select name="isLockedFilter">
-            <option value="">All Status</option>
-            <option value="true" selected="@(ViewBag.IsLockedFilter == true)">Locked</option>
-            <option value="false" selected="@(ViewBag.IsLockedFilter == false)">Unlocked</option>
-        </select>
-        <button type="submit">Filter</button>
-    </form>
+            <!-- Users Table -->
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>User</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <img src="@user.ProfileImageUrl" alt="Avatar" width="40" height="40" class="rounded-circle me-3 border" />
+                                        <span class="fw-medium">@user.UserName</span>
+                                    </div>
+                                </td>
+                                <td>@user.Email</td>
+                                <td>
+                                    @if (user.Roles != null && user.Roles.Any())
+                                    {
+                                        foreach (var role in user.Roles)
+                                        {
+                                            <span class="badge bg-@(role.ToLower() == "admin" ? "danger" : "primary") rounded-pill me-1">@role</span>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-secondary">No Role</span>
+                                    }
+                                </td>
+                                <td>
+                                    @if (user.IsLocked)
+                                    {
+                                        <span class="badge bg-danger rounded-pill"><i class="bi bi-lock-fill me-1"></i>Locked</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-success rounded-pill"><i class="bi bi-unlock me-1"></i>Active</span>
+                                    }
+                                </td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="userMenu-@user.UserId" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="bi bi-gear me-1"></i>Manage
+                                        </button>
+                                        <ul class="dropdown-menu shadow-sm" aria-labelledby="userMenu-@user.UserId">
+                                            @if (user.IsLocked)
+                                            {
+                                                <li><button class="dropdown-item text-success" onclick="unlockUser('@user.UserId')">
+                                                    <i class="bi bi-unlock-fill me-2"></i>Unlock User
+                                                </button></li>
+                                            }
+                                            else
+                                            {
+                                                <li><button class="dropdown-item text-danger" onclick="lockUser('@user.UserId')">
+                                                    <i class="bi bi-lock-fill me-2"></i>Lock User
+                                                </button></li>
+                                            }
+                                            <li><hr class="dropdown-divider"></li>
+                                            <li>
+                                                <div class="px-3 py-2">
+                                                    <label class="form-label mb-1 small fw-medium" for="role-@user.UserId">Change Role</label>
+                                                    <select id="role-@user.UserId" class="form-select form-select-sm" onchange="changeRole('@user.UserId', this.value)">
+                                                        <option value="">Select Role</option>
+                                                        <option value="admin" selected="@(user.Roles?.Contains("admin") == true)">Admin</option>
+                                                        <option value="user" selected="@(user.Roles?.Contains("user") == true)">User</option>
+                                                    </select>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            
+            @if (!Model.Any())
+            {
+                <div class="text-center py-5">
+                    <i class="bi bi-people text-muted mb-3" style="font-size: 3rem;"></i>
+                    <p class="text-muted">No users found matching your criteria</p>
+                </div>
+            }
+        </div>
+    </div>
 </div>
 
 <input type="hidden" id="RequestVerificationToken" name="__RequestVerificationToken" value="@tokens.RequestToken" />
-
-@foreach (var user in Model)
-{
-    <div class="user-card">
-        <img src="@user.ProfileImageUrl" alt="Avatar" width="50" height="50" />
-        <strong>@user.UserName</strong> - @user.Email
-        @if (user.Roles != null && user.Roles.Any())
-        {
-            <span>(Roles: @string.Join(", ", user.Roles))</span>
-        }
-
-        <div class="dropdown">
-            <button class="menu-button">⋮</button>
-            <div class="dropdown-content">
-                @if (user.IsLocked)
-                {
-                    <button onclick="unlockUser('@user.UserId')">Unlock</button>
-                }
-                else
-                {
-                    <button onclick="lockUser('@user.UserId')">Lock</button>
-                }
-                <div class="role-dropdown">
-                    <label for="role-@user.UserId">Change Role:</label>
-                    <select id="role-@user.UserId" onchange="changeRole('@user.UserId', this.value)">
-                        <option value="">Select Role</option>
-                        <option value="admin" selected="@(user.Roles?.Contains("admin") == true)">Admin</option>
-                        <option value="user" selected="@(user.Roles?.Contains("user") == true)">User</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-    </div>
-}
 
 <script>
     function lockUser(userId) {

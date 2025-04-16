@@ -2,15 +2,90 @@
     ViewData["Title"] = "Admin Dashboard";
 }
 
-<h2>@ViewData["Title"]</h2>
+<style>
+    body {
+        background-color: #f8f9fa;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-<div class="alert alert-info">
-    Welcome, Admin! 🎉<br />
-    From here, you can manage users, posts, and platform settings.
+    .dashboard-container {
+        max-width: 1000px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .admin-title {
+        text-align: center;
+        font-size: 2.5rem;
+        color: #333;
+        margin-bottom: 2rem;
+        font-weight: 500;
+    }
+
+    .welcome-card {
+        background-color: #f1f7ff;
+        border-left: 5px solid #0d6efd;
+        padding: 20px;
+        margin-bottom: 2rem;
+        border-radius: 5px;
+    }
+
+    .welcome-message {
+        color: #333;
+        font-size: 1.2rem;
+        margin: 0;
+    }
+
+    .admin-menu {
+        display: flex;
+        justify-content: center;
+        margin-top: 2rem;
+    }
+
+    .menu-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #0d6efd;
+        color: white;
+        padding: 1.5rem 2rem;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 1.2rem;
+        font-weight: 500;
+        transition: background-color 0.2s ease;
+        width: 100%;
+        max-width: 300px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .menu-item:hover {
+        background-color: #0b5ed7;
+        transform: translateY(-2px);
+    }
+
+    .menu-item i {
+        margin-right: 10px;
+        font-size: 1.5rem;
+    }
+</style>
+
+<div class="dashboard-container">
+    <h1 class="admin-title">@ViewData["Title"]</h1>
+
+    <div class="welcome-card">
+        <p class="welcome-message">
+            Welcome to the administrator panel. Use the option below to manage user accounts.
+        </p>
+    </div>
+
+    <div class="admin-menu">
+        <a asp-controller="Profiles" asp-action="Users" class="menu-item">
+            <i class="fas fa-users"></i>
+            Manage Users
+        </a>
+    </div>
 </div>
-
-<ul>
-    <li><a asp-controller="Profiles" asp-action="Users">Manage Users</a></li>
-    <li><a asp-controller="Posts" asp-action="Index">Manage Posts</a></li>
-    <!-- Add more admin links as needed -->
-</ul>
