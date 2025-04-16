@@ -29,6 +29,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\images\\gopost-logo.png",
+      "PackagePath": "staticwebassets\\images\\gopost-logo.png"
+    },
+    {
       "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\js\\comment-interactions.js",
       "PackagePath": "staticwebassets\\js\\comment-interactions.js"
     },
