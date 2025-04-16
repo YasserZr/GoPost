@@ -1,10 +1,82 @@
 ﻿@model IEnumerable<GoPost.Models.Comment>
 
-@foreach (var comment in Model.OrderByDescending(c => c.CreatedAt))
-{
-        <li class="list-group-item">
-            <strong>@comment.User.UserName</strong>: @comment.Content
-            <br />
-            <small class="text-muted">@comment.CreatedAt.ToLocalTime()</small>
-        </li>
-}
+<div class="comments-section">
+    <h4 class="comments-title">Comments (@Model.Count())</h4>
+    
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div class="comment-form mb-4">
+            <form asp-controller="Comments" asp-action="Create" method="post">
+                <input type="hidden" name="PostId" value="@ViewBag.PostId" />
+                
+                <div class="input-group">
+                    <img src="@ViewBag.CurrentUserImage" class="rounded-circle comment-avatar" alt="Your avatar">
+                    <textarea name="Content" class="form-control" placeholder="Write a comment..." required></textarea>
+                </div>
+                
+                <div class="comment-actions text-end">
+                    <button type="submit" class="btn btn-primary btn-sm">
+                        <i class="bi bi-send"></i> Post Comment
+                    </button>
+                </div>
+            </form>
+        </div>
+    }
+    
+    <div class="comments-list">
+        @foreach (var comment in Model)
+        {
+            <div class="comment-card" id="comment-@comment.Id">
+                <div class="comment-header">
+                    <a href="/Profiles/Profile?userId=@comment.UserId" class="comment-user">
+                        <img src="@(comment.User?.ProfileImageUrl ?? "/images/default-profile.png")" class="rounded-circle comment-avatar" alt="@comment.User?.UserName">
+                        <span class="comment-username">@comment.User?.UserName</span>
+                    </a>
+                    <small class="comment-time">@comment.CreatedAt</small>
+                </div>
+                
+                <div class="comment-body">
+                    <p class="comment-content">@comment.Content</p>
+                </div>
+                
+                <div class="comment-footer">
+                    <button class="btn btn-sm btn-link reaction-btn" data-comment-id="@comment.Id">
+                        <i class="bi bi-heart"></i> Like
+                    </button>
+                    
+                    @if (User.Identity.IsAuthenticated && comment.UserId == ViewBag.CurrentUserId)
+                    {
+                        <div class="dropdown comment-actions-dropdown">
+                            <button class="btn btn-sm btn-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-three-dots"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                    <a class="dropdown-item" href="/Comments/Edit/@comment.Id">
+                                        <i class="bi bi-pencil"></i> Edit
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item text-danger" href="/Comments/Delete/@comment.Id">
+                                        <i class="bi bi-trash"></i> Delete
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+        
+        @if (!Model.Any())
+        {
+            <div class="empty-comments">
+                <div class="text-center my-4">
+                    <img src="/images/empty-comments.svg" alt="No comments" class="empty-comments-img">
+                    <h5>No comments yet</h5>
+                    <p class="text-muted">Be the first to share your thoughts!</p>
+                </div>
+            </div>
+        }
+    </div>
+</div>
