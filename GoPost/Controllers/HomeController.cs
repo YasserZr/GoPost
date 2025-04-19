@@ -30,9 +30,9 @@ namespace GoPost.Controllers
                 .Where(u => u.Id != currentUserId &&
                             !_context.Follows.Any(f => f.FollowerId == currentUserId && f.FolloweeId == u.Id))
                 .Take(15)
-                .Select(u => new UserSuggestionViewModel
+                .Select(u => new UserProfileViewModel
                 {
-                    UserId = u.Id,
+                    Id = u.Id,
                     UserName = u.UserName,
                     IsFollowed = false // optional, if you want to support toggling later
                 })

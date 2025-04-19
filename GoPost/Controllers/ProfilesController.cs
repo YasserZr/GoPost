@@ -193,6 +193,7 @@ namespace GoPost.Controllers
 
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> UpdateProfileImage(IFormFile file)
         {
             var user = await _userManager.GetUserAsync(User);

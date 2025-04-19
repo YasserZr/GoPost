@@ -33,12 +33,40 @@
       "PackagePath": "staticwebassets\\images\\300px-Kodim17_noisy.jpg"
     },
     {
+      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\images\\Diego.jpg",
+      "PackagePath": "staticwebassets\\images\\Diego.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\images\\Error.PNG",
+      "PackagePath": "staticwebassets\\images\\Error.PNG"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\images\\John.jpg",
+      "PackagePath": "staticwebassets\\images\\John.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\images\\Marcus.jpeg",
+      "PackagePath": "staticwebassets\\images\\Marcus.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\images\\Noah.jpg",
+      "PackagePath": "staticwebassets\\images\\Noah.jpg"
+    },
+    {
       "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\images\\QRcode.PNG",
       "PackagePath": "staticwebassets\\images\\QRcode.PNG"
     },
     {
+      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\images\\Zoe.jpg",
+      "PackagePath": "staticwebassets\\images\\Zoe.jpg"
+    },
+    {
       "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\images\\gopost-logo.png",
       "PackagePath": "staticwebassets\\images\\gopost-logo.png"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\images\\maya.jpg",
+      "PackagePath": "staticwebassets\\images\\maya.jpg"
     },
     {
       "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\js\\comment-interactions.js",
@@ -289,6 +317,10 @@
       "PackagePath": "staticwebassets\\uploads\\59116a3e-1bb5-47c3-b340-5ad04a86b70a.jpg"
     },
     {
+      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\uploads\\7580a4f4-58eb-4700-b56c-7f8c257d44a2.jpg",
+      "PackagePath": "staticwebassets\\uploads\\7580a4f4-58eb-4700-b56c-7f8c257d44a2.jpg"
+    },
+    {
       "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\uploads\\a9a55177-8bf6-4fc7-bb79-0383c84a8ca2.jpg",
       "PackagePath": "staticwebassets\\uploads\\a9a55177-8bf6-4fc7-bb79-0383c84a8ca2.jpg"
     },
@@ -299,6 +331,10 @@
     {
       "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\uploads\\dca31858-8528-447d-b36c-4bddb482ccb2.jpg",
       "PackagePath": "staticwebassets\\uploads\\dca31858-8528-447d-b36c-4bddb482ccb2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\uploads\\df00c7fa-27a7-4efc-a2e0-3fdd1f182c93.jpg",
+      "PackagePath": "staticwebassets\\uploads\\df00c7fa-27a7-4efc-a2e0-3fdd1f182c93.jpg"
     },
     {
       "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\uploads\\fbcf5dff-fbd2-407a-8f6f-be7435a84e99.jpg",

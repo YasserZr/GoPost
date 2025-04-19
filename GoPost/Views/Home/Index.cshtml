@@ -19,16 +19,16 @@
                     <ul id="suggestionList" class="list-unstyled d-flex flex-nowrap" style="padding-left: 0; margin-bottom: 0; transition: transform 0.3s ease-in-out;">
                     @foreach (var user in Model.SuggestedUsers)
                     {
-                        <li id="user-@user.UserId" class="me-3 flex-shrink-0" style="width: 200px;">
+                        <li id="user-@user.Id" class="me-3 flex-shrink-0" style="width: 200px;">
                             <div class="card h-100 border-0 shadow-sm hover-shadow transition-all">
                                 <div class="card-body text-center p-3">
                                         <img src="@(user.ProfileImageUrl ?? "defaults/images/default-avatar.png")" alt="Profile" class="rounded-circle mb-3 border shadow-sm" width="64" height="64" />
                                     <h6 class="card-title mb-2">
-                                        <a href="@Url.Action("Profile", "Profiles", new { userId = user.UserId })" class="text-decoration-none">
+                                        <a href="@Url.Action("Profile", "Profiles", new { userId = user.Id })" class="text-decoration-none">
                                             @user.UserName
                                         </a>
                                     </h6>
-                                    <button class="btn btn-primary btn-sm w-100 follow-btn" data-user-id="@user.UserId">
+                                    <button class="btn btn-primary btn-sm w-100 follow-btn" data-user-id="@user.Id">
                                         <i class="bi bi-person-plus me-1"></i>Follow
                                     </button>
                                 </div>
