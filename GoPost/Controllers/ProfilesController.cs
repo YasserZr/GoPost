@@ -30,7 +30,7 @@ namespace GoPost.Controllers
 
             var viewModels = users.Select(user => new UserProfileViewModel
             {
-                UserId = user.Id,
+                Id = user.Id,
                 UserName = user.UserName,
                 Email = user.Email,
                 ProfileImageUrl = user.ProfileImageUrl ?? "/images/default-profile.png",
@@ -73,7 +73,7 @@ namespace GoPost.Controllers
             var viewModels = await users
                 .Select(u => new UserProfileViewModel
                 {
-                    UserId = u.Id,
+                    Id = u.Id,
                     UserName = u.UserName,
                     Email = u.Email,
                     ProfileImageUrl = u.ProfileImageUrl,
@@ -166,7 +166,7 @@ namespace GoPost.Controllers
 
             var profileViewModel = new UserProfileViewModel
             {
-                UserId = user.Id,
+                Id = user.Id,
                 UserName = user.UserName,
                 Email = user.Email,
                 ProfileImageUrl = user.ProfileImageUrl ?? "/images/default-profile.png",  // Fallback to default image if null
@@ -223,7 +223,7 @@ namespace GoPost.Controllers
 
             var results = users.Select(user => new UserProfileViewModel
             {
-                UserId = user.Id,
+                Id = user.Id,
                 UserName = user.UserName,
                 Email = user.Email,
                 ProfileImageUrl = user.ProfileImageUrl ?? "/images/default-profile.png",

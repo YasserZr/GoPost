@@ -96,27 +96,27 @@
                                 </td>
                                 <td>
                                     <div class="dropdown">
-                                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="userMenu-@user.UserId" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="userMenu-@user.Id" data-bs-toggle="dropdown" aria-expanded="false">
                                             <i class="bi bi-gear me-1"></i>Manage
                                         </button>
-                                        <ul class="dropdown-menu shadow-sm" aria-labelledby="userMenu-@user.UserId">
+                                        <ul class="dropdown-menu shadow-sm" aria-labelledby="userMenu-@user.Id">
                                             @if (user.IsLocked)
                                             {
-                                                <li><button class="dropdown-item text-success" onclick="unlockUser('@user.UserId')">
+                                                <li><button class="dropdown-item text-success" onclick="unlockUser('@user.Id')">
                                                     <i class="bi bi-unlock-fill me-2"></i>Unlock User
                                                 </button></li>
                                             }
                                             else
                                             {
-                                                <li><button class="dropdown-item text-danger" onclick="lockUser('@user.UserId')">
+                                                <li><button class="dropdown-item text-danger" onclick="lockUser('@user.Id')">
                                                     <i class="bi bi-lock-fill me-2"></i>Lock User
                                                 </button></li>
                                             }
                                             <li><hr class="dropdown-divider"></li>
                                             <li>
                                                 <div class="px-3 py-2">
-                                                    <label class="form-label mb-1 small fw-medium" for="role-@user.UserId">Change Role</label>
-                                                    <select id="role-@user.UserId" class="form-select form-select-sm" onchange="changeRole('@user.UserId', this.value)">
+                                                    <label class="form-label mb-1 small fw-medium" for="role-@user.Id">Change Role</label>
+                                                    <select id="role-@user.Id" class="form-select form-select-sm" onchange="changeRole('@user.Id', this.value)">
                                                         <option value="">Select Role</option>
                                                         <option value="admin" selected="@(user.Roles?.Contains("admin") == true)">Admin</option>
                                                         <option value="user" selected="@(user.Roles?.Contains("user") == true)">User</option>

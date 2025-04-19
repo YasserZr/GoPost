@@ -163,7 +163,7 @@ namespace GoPost.Controllers
                 {
                     await imageFile.CopyToAsync(stream);
                 }
-                post.ImagePath = "/uploads/" + Path.GetFileName(imagePath);
+                post.ImagePath = "/uploads/images/" + Path.GetFileName(imagePath);
             }
 
             // Handle multiple file uploads
@@ -179,7 +179,7 @@ namespace GoPost.Controllers
                         {
                             await file.CopyToAsync(stream);
                         }
-                        savedFilePaths.Add("/uploads/" + Path.GetFileName(filePath));
+                        savedFilePaths.Add("/uploads/files/" + Path.GetFileName(filePath));
                     }
                 }
 
@@ -286,7 +286,7 @@ namespace GoPost.Controllers
                 {
                     await imageFile.CopyToAsync(stream);
                 }
-                existingPost.ImagePath = "/uploads/" + Path.GetFileName(imagePath);
+                existingPost.ImagePath = "/uploads/images/" + Path.GetFileName(imagePath);
             }
 
             // Handle the deletion of files
@@ -327,7 +327,7 @@ namespace GoPost.Controllers
                         existingPost.PostFiles.Add(new PostFile
                         {
                             FileName = Path.GetFileName(filePath),
-                            FilePath = "/uploads/" + Path.GetFileName(filePath)
+                            FilePath = "/uploads/files/" + Path.GetFileName(filePath)
                         });
                     }
                 }

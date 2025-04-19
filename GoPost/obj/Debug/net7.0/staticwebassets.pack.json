@@ -29,6 +29,14 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\images\\300px-Kodim17_noisy.jpg",
+      "PackagePath": "staticwebassets\\images\\300px-Kodim17_noisy.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\images\\QRcode.PNG",
+      "PackagePath": "staticwebassets\\images\\QRcode.PNG"
+    },
+    {
       "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\images\\gopost-logo.png",
       "PackagePath": "staticwebassets\\images\\gopost-logo.png"
     },
