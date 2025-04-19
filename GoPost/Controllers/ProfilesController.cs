@@ -45,7 +45,13 @@ namespace GoPost.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Users(string searchString, string roleFilter, bool? isLockedFilter)
         {
-            var users = _context.Users.OfType<ApplicationUser>().AsQueryable();
+            var currentUserId = _userManager.GetUserId(User);
+
+            // Start with all users except the current user
+            var users = _context.Users
+                .OfType<ApplicationUser>()
+                .Where(u => u.Id != currentUserId)
+                .AsQueryable();
 
             if (!string.IsNullOrEmpty(searchString))
             {
@@ -87,6 +93,7 @@ namespace GoPost.Controllers
 
             return View(viewModels);
         }
+
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
