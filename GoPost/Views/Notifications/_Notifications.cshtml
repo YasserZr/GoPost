@@ -8,25 +8,38 @@
 
 <script src="https://kit.fontawesome.com/ff880e159d.js" crossorigin="anonymous"></script>
 <script>
-    const userId = "@User.FindFirst(ClaimTypes.NameIdentifier)?.Value";
-
     function fetchNotifications() {
+        const userId = "@User.FindFirst(ClaimTypes.NameIdentifier)?.Value";
+
         if (!userId || userId === "null") {
+            console.error("User ID is null or undefined.");
             document.getElementById("notificationList").innerHTML = "<p class='no-notifications'>Please log in to see your notifications.</p>";
             return;
         }
+
         console.log("Fetching notifications for userId:", userId);
+
         fetch(`/Notifications/GetUserNotifications?userId=${userId}`)
-            .then(response => response.json())
+            .then(response => {
+                console.log("Response status:", response.status);
+                return response.json();
+            })
             .then(data => {
                 console.log("Received notification data:", data);
+
+                const notifications = data?.$values || [];
+                console.log("Processed notifications array:", notifications);
+
                 const notificationList = document.getElementById("notificationList");
-                if (data && data.length > 0) {
+                if (notifications.length > 0) {
                     let html = '';
-                    data.forEach(notification => {
+                    notifications.forEach(notification => {
+                        console.log("Processing notification:", notification);
+
                         let icon = '';
                         let notificationTypeClass = '';
-                        switch (notification.type.toLowerCase()) {
+
+                        switch (notification.type?.toLowerCase()) {
                             case "onfollow":
                                 icon = "<i class='fas fa-user-plus'></i>";
                                 notificationTypeClass = "notification-type-follow";
@@ -39,35 +52,129 @@
                                 icon = "<i class='fas fa-comment'></i>";
                                 notificationTypeClass = "notification-type-comment";
                                 break;
-                            case "onpost":
-                                icon = "<i class='fas fa-file-alt'></i>";
-                                notificationTypeClass = "notification-type-post";
-                                break;
                             default:
                                 icon = "<i class='fas fa-bell'></i>";
                                 break;
                         }
-                        const senderName = notification.sender ? notification.sender.userName : "Unknown User";
+
+                        const senderName = notification.sender?.userName || "Unknown User";
                         const senderAvatarUrl = notification.sender?.profileImageUrl || "/defaults/images/default-avatar.png";
 
                         html += `<div class="notification-item ${notificationTypeClass}">
-                                            <img src="${senderAvatarUrl}" alt="${senderName}'s Avatar" class="sender-avatar" />
+                                    <div class="notification-avatar">
+                                        <img src="${senderAvatarUrl}" alt="${senderName}'s Avatar" />
+                                    </div>
+                                    <div class="notification-content">
+                                        <div class="notification-header">
                                             <span class="notification-icon">${icon}</span>
                                             <span class="notification-sender">${senderName}</span>
-                                            <span class="notification-content">${notification.content}</span>
-                                            <span class="notification-timestamp">${new Date(notification.timestamp).toLocaleString()}</span>
-                                        </div>`;
+                                        </div>
+                                        <p class="notification-message">${notification.content || "No content available"}</p>
+                                        <span class="notification-timestamp">${new Date(notification.timestamp).toLocaleString()}</span>
+                                    </div>
+                                </div>`;
                     });
+
                     notificationList.innerHTML = html;
                 } else {
+                    console.warn("No notifications found.");
                     notificationList.innerHTML = "<p class='no-notifications'>No notifications yet.</p>";
                 }
             })
             .catch(error => {
                 console.error("Error fetching notifications:", error);
-                notificationList.innerHTML = "<p class='no-notifications'>Failed to load notifications.</p>";
+                document.getElementById("notificationList").innerHTML = "<p class='no-notifications'>Failed to load notifications.</p>";
             });
     }
 
     fetchNotifications();
 </script>
+
+<style>
+    .notification-container {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .notification-header {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 15px;
+        text-align: center;
+        color: #333;
+    }
+
+    #notificationList {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .notification-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+        padding: 15px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .notification-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .notification-avatar img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .notification-content {
+        flex: 1;
+    }
+
+    .notification-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 1rem;
+        font-weight: bold;
+        color: #555;
+    }
+
+    .notification-icon {
+        font-size: 1.2rem;
+        color: #007bff;
+    }
+
+    .notification-sender {
+        font-size: 1rem;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .notification-message {
+        margin: 5px 0;
+        font-size: 0.9rem;
+        color: #666;
+    }
+
+    .notification-timestamp {
+        font-size: 0.8rem;
+        color: #999;
+    }
+
+    .no-notifications {
+        text-align: center;
+        font-size: 1rem;
+        color: #777;
+    }
+</style>

@@ -38,6 +38,19 @@ namespace GoPost.Controllers
                 .Where(n => n.ReceiverId == userId)
                 .Include(n => n.Sender) // Include sender details
                 .OrderByDescending(n => n.Timestamp)
+                .Select(n => new
+                {
+                    n.NotificationId,
+                    n.Type,
+                    n.Content,
+                    n.IsRead,
+                    n.Timestamp,
+                    Sender = new
+                    {
+                        n.Sender.UserName,
+                        n.Sender.ProfileImageUrl
+                    }
+                })
                 .ToListAsync();
 
             return Json(notifications);
