@@ -471,23 +471,7 @@
                                         var postId = $(this).data('post-id');
                                         window.location.href = '/Posts/Details/' + postId;
                                     });
-
-                                    // Override click behavior for comment and like buttons
-                                    $(".comment-btn[data-post-id='" + post.postId + "']").on('click', function(e) {
-                                        e.stopPropagation();
-                                        var postId = $(this).data('post-id');
-                                        var commentsSection = $('#comments-' + postId);
-                                        if (commentsSection.is(':visible')) {
-                                            commentsSection.slideUp();
-                                        } else {
-                                            commentsSection.slideDown();
-                                            loadComments(postId);
-                                        }
-                                    });
                                 });
-                                // Initialize like and comment counts for the updated following posts
-                                initializeLikeCounts();
-                                initializeCommentCounts();
                             } else {
                                 $("#followingPostsList").append('<li class="list-group-item">No recent posts from the users you are following.</li>');
                             }
