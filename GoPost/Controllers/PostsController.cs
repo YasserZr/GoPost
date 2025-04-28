@@ -53,8 +53,7 @@ namespace GoPost.Controllers
             // Create a UserProfileViewModel and populate it with the required data
             var userProfileViewModel = new UserProfileViewModel
             {
-                Posts = posts, // Assuming UserProfileViewModel has a property to hold the list of posts
-                               // Add other properties as needed, e.g., User information
+                Posts = posts, 
             };
 
             return RedirectToAction("Profile", "Profiles", new { userId = currentUserId });
@@ -68,14 +67,14 @@ namespace GoPost.Controllers
             var postsQuery = _context.Posts
                 .Include(p => p.User)
                 .OrderByDescending(p => p.CreatedAt)
-                .AsQueryable(); // 👈 Make sure it's IQueryable so we can chain
+                .AsQueryable();
 
             if (!string.IsNullOrEmpty(searchString))
             {
                 postsQuery = postsQuery.Where(p => p.Title.Contains(searchString));
             }
 
-            var posts = await postsQuery.ToListAsync(); // 👈 await here gives a List<Post>
+            var posts = await postsQuery.ToListAsync();
 
             return View(posts);
         }
@@ -110,9 +109,9 @@ namespace GoPost.Controllers
             var post = await _context.Posts
                 .Include(p => p.User)
                 .Include(p => p.Comments)
-                    .ThenInclude(c => c.User) // Include comment authors
+                    .ThenInclude(c => c.User)
                 .Include(p => p.Reactions)
-                .Include(p => p.PostFiles) // ✅ Include file attachments
+                .Include(p => p.PostFiles) 
                 .FirstOrDefaultAsync(m => m.Id == id);
 
             if (post == null)
@@ -136,11 +135,11 @@ namespace GoPost.Controllers
         [Authorize]
         public async Task<IActionResult> Create(Post post, IFormFile imageFile, List<IFormFile> fileAttachments)
         {
-            // Ensure that UserId is assigned
+            
             post.UserId = _userManager.GetUserId(User);
             post.CreatedAt = DateTime.UtcNow;
 
-            // Remove the user-specific fields from validation if needed
+            
             ModelState.Remove("User");
             ModelState.Remove("UserId");
 
@@ -149,7 +148,7 @@ namespace GoPost.Controllers
                 return View(post);
             }
 
-            var uploadsDirectory = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads");
+            var uploadsDirectory = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", "images");
             if (!Directory.Exists(uploadsDirectory))
             {
                 Directory.CreateDirectory(uploadsDirectory);
@@ -212,7 +211,7 @@ namespace GoPost.Controllers
             }
 
             var post = await _context.Posts
-                .Include(p => p.PostFiles)  // Include files with the post
+                .Include(p => p.PostFiles) 
                 .FirstOrDefaultAsync(p => p.Id == id);
 
             if (post == null)
@@ -248,7 +247,7 @@ namespace GoPost.Controllers
 
             // Get the existing post from the database
             var existingPost = await _context.Posts
-                .Include(p => p.PostFiles)  // Get the related files
+                .Include(p => p.PostFiles) 
                 .FirstOrDefaultAsync(p => p.Id == id);
 
             if (existingPost == null)
@@ -275,7 +274,7 @@ namespace GoPost.Controllers
                 }
 
                 // Save the new image
-                var uploadsDirectory = Path.Combine(_webHostEnvironment.WebRootPath, "uploads");
+                var uploadsDirectory = Path.Combine(_webHostEnvironment.WebRootPath, "uploads", "images");
                 if (!Directory.Exists(uploadsDirectory))
                 {
                     Directory.CreateDirectory(uploadsDirectory);
