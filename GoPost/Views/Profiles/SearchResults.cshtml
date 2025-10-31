@@ -27,11 +27,11 @@
                     @foreach (var user in Model)
                     {
                         <div class="list-group-item list-group-item-action d-flex align-items-center p-3 border-0 border-bottom">
-                            <img src="@(user.ProfileImageUrl ?? "/defaults/images/default-avatar.png")" alt="@user.UserName's profile" 
-                                 class="rounded-circle me-3" width="50" height="50" />
+                            <img src="@(user.ProfileImageUrl ?? "/defaults/images/default-avatar.png")" alt="@user.UserName.FormatUsername()'s profile" 
+                                 class="rounded-circle me-3 border" width="60" height="60" />
                             <div class="flex-grow-1">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h6 class="mb-0 fw-medium">@user.UserName</h6>
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <h6 class="mb-0 fw-medium">@user.UserName.FormatUsername()</h6>
                                     <a asp-controller="Profiles" asp-action="Profile" asp-route-userId="@user.Id" 
                                        class="btn btn-sm btn-outline-primary">
                                         <i class="bi bi-person-badge me-1"></i>View Profile

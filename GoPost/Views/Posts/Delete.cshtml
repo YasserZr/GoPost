@@ -35,7 +35,7 @@
                         }
                         
                         <div class="mt-3 text-muted small">
-                            <div><strong>Posted by:</strong> @Model.User?.UserName</div>
+                            <div><strong>Posted by:</strong> @Model.User?.UserName.FormatUsername()</div>
                             <div><strong>Date:</strong> @Model.CreatedAt.ToString("MMM d, yyyy h:mm tt")</div>
                             
                             @if (Model.PostFiles != null && Model.PostFiles.Any())

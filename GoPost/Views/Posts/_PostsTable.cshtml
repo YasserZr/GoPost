@@ -28,7 +28,7 @@
                     <td>@item.Title</td>
                     <td>@(item.Content.Length > 60 ? item.Content.Substring(0, 60) + "..." : item.Content)</td>
                     <td>@item.CreatedAt.ToLocalTime().ToString("g")</td>
-                    <td>@item.User?.UserName</td>
+                    <td>@item.User?.UserName.FormatUsername()</td>
                     <td>
                         <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-info">View</a>
                         <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-warning mx-1">Edit</a>

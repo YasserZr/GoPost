@@ -25,7 +25,7 @@
                                         <img src="@(user.ProfileImageUrl ?? "defaults/images/default-avatar.png")" alt="Profile" class="rounded-circle mb-3 border shadow-sm" width="64" height="64" />
                                     <h6 class="card-title mb-2">
                                         <a href="@Url.Action("Profile", "Profiles", new { userId = user.Id })" class="text-decoration-none">
-                                            @user.UserName
+                                            @user.UserName.FormatUsername()
                                         </a>
                                     </h6>
                                     <button class="btn btn-primary btn-sm w-100 follow-btn" data-user-id="@user.Id">
@@ -64,9 +64,9 @@
                         <li class="list-group-item p-0 post-item" data-post-id="@post.Id">
                             <div class="card border-0">
                                 <div class="card-header bg-transparent d-flex align-items-center py-3">
-                                        <img src="@(post.User.ProfileImageUrl ?? "defaults/images/default-avatar.png")" class="rounded-circle me-2" width="40" height="40" alt="@post.User.UserName's profile">
+                                        <img src="@(post.User.ProfileImageUrl ?? "defaults/images/default-avatar.png")" class="rounded-circle me-2" width="40" height="40" alt="@post.User.UserName.FormatUsername()'s profile">
                                     <div>
-                                        <div class="fw-bold text-primary">@post.User.UserName</div>
+                                        <div class="fw-bold text-primary">@post.User.UserName.FormatUsername()</div>
                                         <div class="text-muted small"><i class="bi bi-clock me-1"></i>@post.CreatedAt.ToString("g")</div>
                                     </div>
                                 </div>
@@ -135,9 +135,9 @@
                         <li class="list-group-item p-0 post-item" data-post-id="@post.Id">
                             <div class="card border-0">
                                 <div class="card-header bg-transparent d-flex align-items-center py-3">
-                                    <img src="@(post.User.ProfileImageUrl ?? "/images/default-avatar.png")" class="rounded-circle me-2" width="40" height="40" alt="@post.User.UserName's profile">
+                                    <img src="@(post.User.ProfileImageUrl ?? "/images/default-avatar.png")" class="rounded-circle me-2" width="40" height="40" alt="@post.User.UserName.FormatUsername()'s profile">
                                     <div>
-                                        <div class="fw-bold text-primary">@post.User.UserName</div>
+                                        <div class="fw-bold text-primary">@post.User.UserName.FormatUsername()</div>
                                         <div class="text-muted small"><i class="bi bi-clock me-1"></i>@post.CreatedAt.ToString("g")</div>
                                     </div>
                                 </div>

@@ -65,8 +65,16 @@
       "PackagePath": "staticwebassets\\images\\default-avatar.png"
     },
     {
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\images\\firas.jpg",
+      "PackagePath": "staticwebassets\\images\\firas.jpg"
+    },
+    {
       "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\images\\gopost-logo.png",
       "PackagePath": "staticwebassets\\images\\gopost-logo.png"
+    },
+    {
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\images\\khalil.jpg",
+      "PackagePath": "staticwebassets\\images\\khalil.jpg"
     },
     {
       "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\images\\maya.jpg",
@@ -75,6 +83,26 @@
     {
       "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\images\\me.PNG",
       "PackagePath": "staticwebassets\\images\\me.PNG"
+    },
+    {
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\images\\omar.jpg",
+      "PackagePath": "staticwebassets\\images\\omar.jpg"
+    },
+    {
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\images\\salma.jpg",
+      "PackagePath": "staticwebassets\\images\\salma.jpg"
+    },
+    {
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\images\\sami.jpg",
+      "PackagePath": "staticwebassets\\images\\sami.jpg"
+    },
+    {
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\images\\sarah.jpg",
+      "PackagePath": "staticwebassets\\images\\sarah.jpg"
+    },
+    {
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\images\\unnamed.jpg",
+      "PackagePath": "staticwebassets\\images\\unnamed.jpg"
     },
     {
       "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\js\\comment-interactions.js",
@@ -339,6 +367,10 @@
     {
       "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\uploads\\images\\7580a4f4-58eb-4700-b56c-7f8c257d44a2.jpg",
       "PackagePath": "staticwebassets\\uploads\\images\\7580a4f4-58eb-4700-b56c-7f8c257d44a2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\uploads\\images\\82ab276c-6820-41fb-a9f7-5bb29889d614.png",
+      "PackagePath": "staticwebassets\\uploads\\images\\82ab276c-6820-41fb-a9f7-5bb29889d614.png"
     },
     {
       "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\uploads\\images\\a9a55177-8bf6-4fc7-bb79-0383c84a8ca2.jpg",
