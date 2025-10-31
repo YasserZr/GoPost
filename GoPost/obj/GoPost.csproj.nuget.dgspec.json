@@ -1,30 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\GoPost.csproj": {}
+    "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\GoPost.csproj": {}
   },
   "projects": {
-    "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\GoPost.csproj": {
+    "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\GoPost.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\GoPost.csproj",
+        "projectUniqueName": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\GoPost.csproj",
         "projectName": "GoPost",
-        "projectPath": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\GoPost.csproj",
-        "packagesPath": "C:\\Users\\MSI\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\obj\\",
+        "projectPath": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\GoPost.csproj",
+        "packagesPath": "C:\\Users\\otaku\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\MSI\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\otaku\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -97,7 +92,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.410\\RuntimeIdentifierGraph.json"
         }
       }
     }

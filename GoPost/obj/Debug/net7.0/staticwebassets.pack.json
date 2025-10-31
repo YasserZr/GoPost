@@ -1,371 +1,371 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\GoPost.bundle.scp.css",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\GoPost.bundle.scp.css",
       "PackagePath": "staticwebassets\\GoPost.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\css\\comments.css",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\css\\comments.css",
       "PackagePath": "staticwebassets\\css\\comments.css"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\css\\design-system.css",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\css\\design-system.css",
       "PackagePath": "staticwebassets\\css\\design-system.css"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\css\\modern-theme.css",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\css\\modern-theme.css",
       "PackagePath": "staticwebassets\\css\\modern-theme.css"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\css\\site.css",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\defaults\\images\\default-avatar.png",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\defaults\\images\\default-avatar.png",
       "PackagePath": "staticwebassets\\defaults\\images\\default-avatar.png"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\favicon.ico",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\images\\300px-Kodim17_noisy.jpg",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\images\\300px-Kodim17_noisy.jpg",
       "PackagePath": "staticwebassets\\images\\300px-Kodim17_noisy.jpg"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\images\\Diego.jpg",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\images\\Diego.jpg",
       "PackagePath": "staticwebassets\\images\\Diego.jpg"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\images\\Error.PNG",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\images\\Error.PNG",
       "PackagePath": "staticwebassets\\images\\Error.PNG"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\images\\John.jpg",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\images\\John.jpg",
       "PackagePath": "staticwebassets\\images\\John.jpg"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\images\\Marcus.jpeg",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\images\\Marcus.jpeg",
       "PackagePath": "staticwebassets\\images\\Marcus.jpeg"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\images\\Noah.jpg",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\images\\Noah.jpg",
       "PackagePath": "staticwebassets\\images\\Noah.jpg"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\images\\QRcode.PNG",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\images\\QRcode.PNG",
       "PackagePath": "staticwebassets\\images\\QRcode.PNG"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\images\\Zoe.jpg",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\images\\Zoe.jpg",
       "PackagePath": "staticwebassets\\images\\Zoe.jpg"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\images\\default-avatar.png",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\images\\default-avatar.png",
       "PackagePath": "staticwebassets\\images\\default-avatar.png"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\images\\gopost-logo.png",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\images\\gopost-logo.png",
       "PackagePath": "staticwebassets\\images\\gopost-logo.png"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\images\\maya.jpg",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\images\\maya.jpg",
       "PackagePath": "staticwebassets\\images\\maya.jpg"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\images\\me.PNG",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\images\\me.PNG",
       "PackagePath": "staticwebassets\\images\\me.PNG"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\js\\comment-interactions.js",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\js\\comment-interactions.js",
       "PackagePath": "staticwebassets\\js\\comment-interactions.js"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\js\\interactions.js",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\js\\interactions.js",
       "PackagePath": "staticwebassets\\js\\interactions.js"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\js\\site.js",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\LICENSE",
       "PackagePath": "staticwebassets\\lib\\bootstrap"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\uploads\\581c0f8a-b6b2-4102-939e-26772a81492c.PNG",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\uploads\\581c0f8a-b6b2-4102-939e-26772a81492c.PNG",
       "PackagePath": "staticwebassets\\uploads\\581c0f8a-b6b2-4102-939e-26772a81492c.PNG"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\uploads\\6206cf5d-96e9-4725-a63b-d9633fadc573.sql",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\uploads\\6206cf5d-96e9-4725-a63b-d9633fadc573.sql",
       "PackagePath": "staticwebassets\\uploads\\6206cf5d-96e9-4725-a63b-d9633fadc573.sql"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\uploads\\images\\35102c68-224f-40c3-ade6-097b8e1f08e5.PNG",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\uploads\\images\\35102c68-224f-40c3-ade6-097b8e1f08e5.PNG",
       "PackagePath": "staticwebassets\\uploads\\images\\35102c68-224f-40c3-ade6-097b8e1f08e5.PNG"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\uploads\\images\\4ba4f681-8bde-4c4d-b06a-21b20d327e2e.jpg",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\uploads\\images\\4ba4f681-8bde-4c4d-b06a-21b20d327e2e.jpg",
       "PackagePath": "staticwebassets\\uploads\\images\\4ba4f681-8bde-4c4d-b06a-21b20d327e2e.jpg"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\uploads\\images\\59116a3e-1bb5-47c3-b340-5ad04a86b70a.jpg",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\uploads\\images\\59116a3e-1bb5-47c3-b340-5ad04a86b70a.jpg",
       "PackagePath": "staticwebassets\\uploads\\images\\59116a3e-1bb5-47c3-b340-5ad04a86b70a.jpg"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\uploads\\images\\7580a4f4-58eb-4700-b56c-7f8c257d44a2.jpg",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\uploads\\images\\7580a4f4-58eb-4700-b56c-7f8c257d44a2.jpg",
       "PackagePath": "staticwebassets\\uploads\\images\\7580a4f4-58eb-4700-b56c-7f8c257d44a2.jpg"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\uploads\\images\\a9a55177-8bf6-4fc7-bb79-0383c84a8ca2.jpg",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\uploads\\images\\a9a55177-8bf6-4fc7-bb79-0383c84a8ca2.jpg",
       "PackagePath": "staticwebassets\\uploads\\images\\a9a55177-8bf6-4fc7-bb79-0383c84a8ca2.jpg"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\uploads\\images\\b1e1da3c-1a8e-4012-b6bc-3ebbf5d51e4b.PNG",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\uploads\\images\\b1e1da3c-1a8e-4012-b6bc-3ebbf5d51e4b.PNG",
       "PackagePath": "staticwebassets\\uploads\\images\\b1e1da3c-1a8e-4012-b6bc-3ebbf5d51e4b.PNG"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\uploads\\images\\b9d7066e-6a58-4ae1-bd59-9c99b82ead98.jpg",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\uploads\\images\\b9d7066e-6a58-4ae1-bd59-9c99b82ead98.jpg",
       "PackagePath": "staticwebassets\\uploads\\images\\b9d7066e-6a58-4ae1-bd59-9c99b82ead98.jpg"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\uploads\\images\\c562acf5-f109-4d2b-8466-eca3df1972d0.PNG",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\uploads\\images\\c562acf5-f109-4d2b-8466-eca3df1972d0.PNG",
       "PackagePath": "staticwebassets\\uploads\\images\\c562acf5-f109-4d2b-8466-eca3df1972d0.PNG"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\uploads\\images\\dca31858-8528-447d-b36c-4bddb482ccb2.jpg",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\uploads\\images\\dca31858-8528-447d-b36c-4bddb482ccb2.jpg",
       "PackagePath": "staticwebassets\\uploads\\images\\dca31858-8528-447d-b36c-4bddb482ccb2.jpg"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\uploads\\images\\df00c7fa-27a7-4efc-a2e0-3fdd1f182c93.jpg",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\uploads\\images\\df00c7fa-27a7-4efc-a2e0-3fdd1f182c93.jpg",
       "PackagePath": "staticwebassets\\uploads\\images\\df00c7fa-27a7-4efc-a2e0-3fdd1f182c93.jpg"
     },
     {
-      "Id": "C:\\Users\\MSI\\source\\repos\\GoPost\\GoPost\\wwwroot\\uploads\\images\\fbcf5dff-fbd2-407a-8f6f-be7435a84e99.jpg",
+      "Id": "C:\\Users\\otaku\\Desktop\\2025\\GoPost\\GoPost\\wwwroot\\uploads\\images\\fbcf5dff-fbd2-407a-8f6f-be7435a84e99.jpg",
       "PackagePath": "staticwebassets\\uploads\\images\\fbcf5dff-fbd2-407a-8f6f-be7435a84e99.jpg"
     },
     {

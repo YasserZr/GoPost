@@ -9,159 +9,157 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = GoPost
 build_property.RootNamespace = GoPost
-build_property.ProjectDir = c:\Users\MSI\source\repos\GoPost\GoPost\
-build_property.EnableComHosting = 
-build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.ProjectDir = C:\Users\otaku\Desktop\2025\GoPost\GoPost\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = c:\Users\MSI\source\repos\GoPost\GoPost
+build_property.MSBuildProjectDirectory = C:\Users\otaku\Desktop\2025\GoPost\GoPost
 build_property._RazorSourceGeneratorDebug = 
 
-[c:/Users/MSI/source/repos/GoPost/GoPost/Components/PostList.razor]
+[C:/Users/otaku/Desktop/2025/GoPost/GoPost/Components/PostList.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQb3N0TGlzdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MSI/source/repos/GoPost/GoPost/Areas/Identity/Pages/_ViewStart.cshtml]
+[C:/Users/otaku/Desktop/2025/GoPost/GoPost/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MSI/source/repos/GoPost/GoPost/Views/Admin/Dashboard.cshtml]
+[C:/Users/otaku/Desktop/2025/GoPost/GoPost/Views/Admin/Dashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGFzaGJvYXJkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MSI/source/repos/GoPost/GoPost/Views/Comments/Create.cshtml]
+[C:/Users/otaku/Desktop/2025/GoPost/GoPost/Views/Comments/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbWVudHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MSI/source/repos/GoPost/GoPost/Views/Comments/Delete.cshtml]
+[C:/Users/otaku/Desktop/2025/GoPost/GoPost/Views/Comments/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbWVudHNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MSI/source/repos/GoPost/GoPost/Views/Comments/Details.cshtml]
+[C:/Users/otaku/Desktop/2025/GoPost/GoPost/Views/Comments/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbWVudHNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MSI/source/repos/GoPost/GoPost/Views/Comments/Edit.cshtml]
+[C:/Users/otaku/Desktop/2025/GoPost/GoPost/Views/Comments/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbWVudHNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MSI/source/repos/GoPost/GoPost/Views/Comments/Index.cshtml]
+[C:/Users/otaku/Desktop/2025/GoPost/GoPost/Views/Comments/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbWVudHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MSI/source/repos/GoPost/GoPost/Views/Comments/_CommentsList.cshtml]
+[C:/Users/otaku/Desktop/2025/GoPost/GoPost/Views/Comments/_CommentsList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbWVudHNcX0NvbW1lbnRzTGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MSI/source/repos/GoPost/GoPost/Views/Follows/Create.cshtml]
+[C:/Users/otaku/Desktop/2025/GoPost/GoPost/Views/Follows/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9sbG93c1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MSI/source/repos/GoPost/GoPost/Views/Follows/Delete.cshtml]
+[C:/Users/otaku/Desktop/2025/GoPost/GoPost/Views/Follows/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9sbG93c1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MSI/source/repos/GoPost/GoPost/Views/Follows/Details.cshtml]
+[C:/Users/otaku/Desktop/2025/GoPost/GoPost/Views/Follows/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9sbG93c1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MSI/source/repos/GoPost/GoPost/Views/Follows/Edit.cshtml]
+[C:/Users/otaku/Desktop/2025/GoPost/GoPost/Views/Follows/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9sbG93c1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MSI/source/repos/GoPost/GoPost/Views/Follows/Index.cshtml]
+[C:/Users/otaku/Desktop/2025/GoPost/GoPost/Views/Follows/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9sbG93c1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MSI/source/repos/GoPost/GoPost/Views/Home/Index.cshtml]
+[C:/Users/otaku/Desktop/2025/GoPost/GoPost/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MSI/source/repos/GoPost/GoPost/Views/Home/Privacy.cshtml]
+[C:/Users/otaku/Desktop/2025/GoPost/GoPost/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MSI/source/repos/GoPost/GoPost/Views/Notifications/_Notifications.cshtml]
+[C:/Users/otaku/Desktop/2025/GoPost/GoPost/Views/Notifications/_Notifications.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTm90aWZpY2F0aW9uc1xfTm90aWZpY2F0aW9ucy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MSI/source/repos/GoPost/GoPost/Views/Posts/Create.cshtml]
+[C:/Users/otaku/Desktop/2025/GoPost/GoPost/Views/Posts/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MSI/source/repos/GoPost/GoPost/Views/Posts/Delete.cshtml]
+[C:/Users/otaku/Desktop/2025/GoPost/GoPost/Views/Posts/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdHNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MSI/source/repos/GoPost/GoPost/Views/Posts/Details.cshtml]
+[C:/Users/otaku/Desktop/2025/GoPost/GoPost/Views/Posts/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdHNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MSI/source/repos/GoPost/GoPost/Views/Posts/Edit.cshtml]
+[C:/Users/otaku/Desktop/2025/GoPost/GoPost/Views/Posts/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdHNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MSI/source/repos/GoPost/GoPost/Views/Posts/Index.cshtml]
+[C:/Users/otaku/Desktop/2025/GoPost/GoPost/Views/Posts/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MSI/source/repos/GoPost/GoPost/Views/Posts/_PostsTable.cshtml]
+[C:/Users/otaku/Desktop/2025/GoPost/GoPost/Views/Posts/_PostsTable.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdHNcX1Bvc3RzVGFibGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MSI/source/repos/GoPost/GoPost/Views/Profiles/SearchResults.cshtml]
+[C:/Users/otaku/Desktop/2025/GoPost/GoPost/Views/Profiles/SearchResults.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZXNcU2VhcmNoUmVzdWx0cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MSI/source/repos/GoPost/GoPost/Views/Profiles/UserProfile.cshtml]
+[C:/Users/otaku/Desktop/2025/GoPost/GoPost/Views/Profiles/UserProfile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZXNcVXNlclByb2ZpbGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MSI/source/repos/GoPost/GoPost/Views/Profiles/Users.cshtml]
+[C:/Users/otaku/Desktop/2025/GoPost/GoPost/Views/Profiles/Users.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZXNcVXNlcnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MSI/source/repos/GoPost/GoPost/Views/Reactions/Create.cshtml]
+[C:/Users/otaku/Desktop/2025/GoPost/GoPost/Views/Reactions/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVhY3Rpb25zXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MSI/source/repos/GoPost/GoPost/Views/Reactions/Delete.cshtml]
+[C:/Users/otaku/Desktop/2025/GoPost/GoPost/Views/Reactions/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVhY3Rpb25zXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MSI/source/repos/GoPost/GoPost/Views/Reactions/Details.cshtml]
+[C:/Users/otaku/Desktop/2025/GoPost/GoPost/Views/Reactions/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVhY3Rpb25zXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MSI/source/repos/GoPost/GoPost/Views/Reactions/Edit.cshtml]
+[C:/Users/otaku/Desktop/2025/GoPost/GoPost/Views/Reactions/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVhY3Rpb25zXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MSI/source/repos/GoPost/GoPost/Views/Reactions/Index.cshtml]
+[C:/Users/otaku/Desktop/2025/GoPost/GoPost/Views/Reactions/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVhY3Rpb25zXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MSI/source/repos/GoPost/GoPost/Views/Shared/Error.cshtml]
+[C:/Users/otaku/Desktop/2025/GoPost/GoPost/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MSI/source/repos/GoPost/GoPost/Views/Shared/_LoginPartial.cshtml]
+[C:/Users/otaku/Desktop/2025/GoPost/GoPost/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MSI/source/repos/GoPost/GoPost/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/otaku/Desktop/2025/GoPost/GoPost/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MSI/source/repos/GoPost/GoPost/Views/_ViewImports.cshtml]
+[C:/Users/otaku/Desktop/2025/GoPost/GoPost/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MSI/source/repos/GoPost/GoPost/Views/_ViewStart.cshtml]
+[C:/Users/otaku/Desktop/2025/GoPost/GoPost/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MSI/source/repos/GoPost/GoPost/Views/Shared/_Layout.cshtml]
+[C:/Users/otaku/Desktop/2025/GoPost/GoPost/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-x2ils89icd
